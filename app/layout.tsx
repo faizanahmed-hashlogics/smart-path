@@ -45,7 +45,7 @@ export default function RootLayout({
     <html lang="en" className={`${crimsonText.variable} ${inter.variable}`} suppressHydrationWarning>
       <head />
       <body className="antialiased">
-        <ThemeProvider defaultTheme="dark" storageKey="smart-path-theme">
+        <ThemeProvider defaultTheme="light" storageKey="smart-path-theme">
           {children}
         </ThemeProvider>
       </body>
