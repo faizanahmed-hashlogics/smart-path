@@ -1,11 +1,12 @@
 "use client"
 
 import { Container } from "@/components/ui/container"
+import Link from "next/link"
 import { Linkedin } from "lucide-react"
 import { SITE_CONFIG } from "@/lib/constants"
 
 const footerLinks = [
-  { name: "Services", href: "#services" },
+  { name: "Services", href: "/services" },
   { name: "About", href: "#about" },
   { name: "Process", href: "#process" },
   { name: "Testimonials", href: "#testimonials" },
@@ -35,15 +36,25 @@ export function Footer() {
             </div>
 
             <div className="flex flex-wrap gap-6 mb-8 md:mb-0">
-              {footerLinks.map((link) => (
-                <button
-                  key={link.name}
-                  onClick={() => scrollToSection(link.href)}
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {link.name}
-                </button>
-              ))}
+              {footerLinks.map((link) =>
+                link.href.startsWith("#") ? (
+                  <button
+                    key={link.name}
+                    onClick={() => scrollToSection(link.href)}
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {link.name}
+                  </button>
+                ) : (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                )
+              )}
             </div>
 
             <div>

@@ -182,4 +182,36 @@
   .backface-hidden {
     backface-visibility: hidden;
   }
+
+  /* Marquee animation for logos (left-to-right) */
+  @keyframes marquee-ltr {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+
+  .animate-marquee-ltr {
+    animation: marquee-ltr 30s linear infinite;
+  }
+  .animate-marquee-ltr-2 {
+    animation: marquee-ltr 30s linear infinite;
+    animation-delay: -15s; /* offset for seamless stream */
+  }
+
+  /* Subtle fade on edges so logos don't pop in/out */
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-marquee-ltr,
+    .animate-marquee-ltr-2 {
+      animation: none !important;
+      transform: none !important;
+    }
+  }
 }

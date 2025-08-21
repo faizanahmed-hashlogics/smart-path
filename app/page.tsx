@@ -5,7 +5,6 @@ import { InsightsSection } from "@/components/insights-section"
 import { OurWorkSection } from "@/components/our-work-section"
 import { CareersSection } from "@/components/careers-section"
 import { TrustRow } from "@/components/trust-row"
-import { Services } from "@/components/services"
 import { About } from "@/components/about"
 import { Process } from "@/components/process"
 import { Stats } from "@/components/stats"
@@ -21,11 +20,10 @@ export default function HomePage() {
       <main>
         <Hero />
         <VideoSection />
+        <TrustRow />
         <InsightsSection />
         <OurWorkSection />
         <CareersSection />
-        <TrustRow />
-        <Services />
         <About />
         <Process />
         <Stats />
