@@ -1,9 +1,9 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
 import { Container } from "@/components/ui/container"
 import { Section } from "@/components/ui/section"
 import { SITE_CONFIG } from "@/lib/constants"
+import { LiquidButton } from "@/components/animate-ui/buttons/liquid"
 import { useState, useEffect } from "react"
 
 export function Hero() {
@@ -50,17 +50,20 @@ export function Hero() {
           </p>
           <p className="mt-4 text-base leading-7 text-gray-300 max-w-3xl mx-auto">{SITE_CONFIG.description}</p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
-            <Button size="lg" onClick={() => scrollToSection("#contact")} className="neon-glow">
+            <LiquidButton
+              size="lg"
+              onClick={() => scrollToSection("#contact")}
+              className="neon-glow text-base"
+            >
               Get a Free Consultation
-            </Button>
-            <Button
-              variant="outline"
+            </LiquidButton>
+            <LiquidButton
               size="lg"
               onClick={() => scrollToSection("#services")}
-              className="neon-border hover:neon-glow text-white border-white hover:bg-white hover:text-black"
+              className="neon-glow text-base"
             >
               Explore Services
-            </Button>
+            </LiquidButton>
           </div>
         </div>
       </Container>
