@@ -123,9 +123,7 @@ export function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b border-border bg-background transition-shadow ${
-        scrolled ? "shadow-sm" : "shadow-none"
-      }`}
+      className="relative bg-background"
     >
       <div>
         <Container>
@@ -176,9 +174,13 @@ export function Navbar() {
         </Container>
       </div>
 
-      <div>
+      <div
+        className={`sticky top-0 z-50 border-b border-border bg-background transition-shadow ${
+          scrolled ? "shadow-sm" : "shadow-none"
+        }`}
+      >
         <Container>
-          <nav className="flex items-center py-3 min-h-14">
+          <nav className="relative flex items-center justify-center py-3 min-h-14">
             <div className="flex lg:hidden">
               <Button
                 variant="ghost"
@@ -191,17 +193,17 @@ export function Navbar() {
               </Button>
             </div>
 
-            <div className="hidden lg:flex lg:gap-x-8 ml-4">
+            <div className="hidden lg:flex lg:gap-x-8">
               {navigation.map((item) => {
                 if (item.href.startsWith("#")) {
                   return pathname === "/" ? (
                     <button
                       key={item.name}
                       onClick={() => scrollToSection(item.href)}
-                      className={`inline-flex items-center h-10 px-1 border-b-2 text-sm font-medium tracking-wide transition-colors ${
+                      className={`inline-flex items-center h-10 px-3 rounded-sm text-sm font-medium tracking-wide transition-colors ${
                         isActive(item.href)
-                          ? "text-foreground border-primary"
-                          : "text-muted-foreground border-transparent hover:text-foreground hover:border-primary/60"
+                          ? "bg-primary/10 text-primary"
+                          : "text-muted-foreground hover:text-foreground hover:bg-muted"
                       }`}
                       aria-current={isActive(item.href) ? "page" : undefined}
                     >
@@ -211,10 +213,10 @@ export function Navbar() {
                     <Link
                       key={item.name}
                       href={`/${item.href}`}
-                      className={`inline-flex items-center h-10 px-1 border-b-2 text-sm font-medium tracking-wide transition-colors ${
+                      className={`inline-flex items-center h-10 px-3 rounded-sm text-sm font-medium tracking-wide transition-colors ${
                         isActive(item.href)
-                          ? "text-foreground border-primary"
-                          : "text-muted-foreground border-transparent hover:text-foreground hover:border-primary/60"
+                          ? "bg-primary/10 text-primary"
+                          : "text-muted-foreground hover:text-foreground hover:bg-muted"
                       }`}
                       aria-current={isActive(item.href) ? "page" : undefined}
                     >
@@ -226,10 +228,10 @@ export function Navbar() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className={`inline-flex items-center h-10 px-1 border-b-2 text-sm font-medium tracking-wide transition-colors ${
+                    className={`inline-flex items-center h-10 px-3 rounded-sm text-sm font-medium tracking-wide transition-colors ${
                       isActive(item.href)
-                        ? "text-foreground border-primary"
-                        : "text-muted-foreground border-transparent hover:text-foreground hover:border-primary/60"
+                        ? "bg-primary/10 text-primary"
+                        : "text-muted-foreground hover:text-foreground hover:bg-muted"
                     }`}
                     aria-current={isActive(item.href) ? "page" : undefined}
                   >
@@ -239,7 +241,7 @@ export function Navbar() {
               })}
             </div>
 
-            <div className="hidden lg:flex items-center space-x-3 ml-auto">
+            <div className="hidden lg:flex items-center space-x-3 absolute right-0 top-1/2 -translate-y-1/2">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
