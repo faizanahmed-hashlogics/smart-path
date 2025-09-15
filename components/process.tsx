@@ -7,9 +7,9 @@ export function Process() {
     <Section id="process">
       <Container>
         <div className="text-center mb-16">
-          <h2 className="font-heading text-3xl font-bold sm:text-4xl">Our Process</h2>
+          <h2 className="font-heading text-3xl font-bold sm:text-4xl">Our Methodology</h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-            A proven methodology to guide your business from vision to success
+            A systematic approach to administrative consultancy and economic feasibility analysis
           </p>
         </div>
 
