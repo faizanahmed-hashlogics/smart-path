@@ -43,10 +43,10 @@ export function Hero() {
       <Container className="relative z-10 flex items-center min-h-80">
         <div className="mx-auto max-w-4xl text-center text-white">
           <h1 className="font-heading text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl text-balance">
-            Transform Your Business in the UAE
+            Expert Administrative & Economic Consultancy in the UAE
           </h1>
           <p className="mt-6 text-lg leading-8 text-gray-200 max-w-2xl mx-auto">
-            Expert consulting solutions for sustainable growth in the Middle East market
+            Specialized administrative consultancy and economic feasibility studies to drive informed decision-making and sustainable growth
           </p>
           <p className="mt-4 text-base leading-7 text-gray-300 max-w-3xl mx-auto">{SITE_CONFIG.description}</p>
           <div className="mt-10 flex items-center justify-center gap-x-6">

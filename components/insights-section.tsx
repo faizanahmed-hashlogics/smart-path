@@ -7,49 +7,49 @@ import CircularGallery from "@/components/circular-gallery"
 
 const insights = [
   {
-    title: "UAE Business Growth Acceleration",
+    title: "Administrative Process Optimization in the UAE",
     description:
-      "Strategic frameworks for scaling businesses in the UAE's dynamic economic landscape and emerging market opportunities",
+      "Comprehensive frameworks for streamlining administrative operations and enhancing organizational efficiency in UAE businesses",
     image: "/images/hero-slide-1.jpeg",
-    category: "Growth Strategy",
+    category: "Administrative Consultancy",
     link: "#",
   },
   {
-    title: "Digital Innovation for Middle East Enterprises",
+    title: "Economic Feasibility Analysis for UAE Projects",
     description:
-      "Transforming traditional businesses through cutting-edge technology adoption and digital-first strategies",
+      "Advanced methodologies for conducting thorough economic feasibility studies and investment validation in the Middle East market",
     image: "/images/hero-slide-2.jpeg",
-    category: "Digital Strategy",
+    category: "Economic Studies",
     link: "#",
   },
   {
-    title: "MENA Market Entry Excellence",
+    title: "Regulatory Compliance & Administrative Excellence",
     description:
-      "Comprehensive roadmap for international businesses entering Middle East markets with proven success methodologies",
+      "Strategic approaches to ensuring full regulatory compliance while optimizing administrative processes for maximum efficiency",
     image: "/images/dubai-skyline.webp",
-    category: "Market Entry",
+    category: "Compliance",
     link: "#",
   },
   {
-    title: "Executive Leadership in the New Economy",
+    title: "Financial Modeling for Business Decisions",
     description:
-      "Building resilient leadership capabilities for navigating uncertainty and driving sustainable business growth",
+      "Comprehensive financial analysis and modeling techniques to support informed business decisions and investment planning",
     image: "/images/hero-slide-1.jpeg",
-    category: "Leadership",
+    category: "Financial Analysis",
     link: "#",
   },
   {
-    title: "Sustainable Business Practices in the Gulf",
-    description: "Implementing ESG frameworks and sustainable business models for long-term success in the Gulf region",
+    title: "Organizational Structure & Governance Design",
+    description: "Expert guidance on designing optimal organizational structures and governance frameworks for sustainable growth",
     image: "/images/hero-slide-2.jpeg",
-    category: "Sustainability",
+    category: "Organizational Design",
     link: "#",
   },
   {
-    title: "Financial Strategy & Investment Planning",
-    description: "Advanced financial modeling and investment strategies for maximizing returns in emerging markets",
+    title: "Market Analysis & Economic Forecasting",
+    description: "Advanced market research and economic forecasting methodologies for strategic business planning in the UAE",
     image: "/images/dubai-skyline.webp",
-    category: "Finance",
+    category: "Market Research",
     link: "#",
   },
 ]
@@ -63,11 +63,11 @@ export function InsightsSection() {
             Insights
           </span>
           <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
-            Latest perspectives on growth in the UAE
+            Expert insights on administrative and economic consultancy
           </h2>
           <p className="text-base md:text-lg text-muted-foreground">
-            Practical guidance, frameworks, and analysis from our consultants across strategy, digital, finance, and
-            operations.
+            Practical guidance, frameworks, and analysis from our consultants across administrative optimization, 
+            economic feasibility studies, and strategic business analysis.
           </p>
         </div>
 

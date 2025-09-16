@@ -7,14 +7,14 @@ export function About() {
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="font-heading text-3xl font-bold sm:text-4xl mb-6">Clarity. Innovation. Reliability.</h2>
+            <h2 className="font-heading text-3xl font-bold sm:text-4xl mb-6">Administrative Excellence. Economic Insight. Strategic Growth.</h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              Headquartered in the UAE, Smart Path Consultancy helps entrepreneurs, startups, and established
-              enterprises navigate regulations, enter markets, and scale with confidence.
+              Headquartered in the UAE, Smart Path Consultancy specializes in administrative consultancy and economic feasibility studies, 
+              helping organizations optimize operations, validate investments, and make data-driven decisions with confidence.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              With deep regional insight and a results-driven approach, we turn business goals into reality—at every
-              stage of the journey.
+              With deep expertise in administrative process optimization and comprehensive economic analysis, we transform 
+              complex business challenges into clear, actionable strategies for sustainable growth.
             </p>
           </div>
 

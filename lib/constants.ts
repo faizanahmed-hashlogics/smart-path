@@ -1,10 +1,10 @@
 export const SITE_CONFIG = {
   name: "Smart Path Consultancy",
-  tagline: "Your Strategic Partner for Business Growth in the UAE",
+  tagline: "Expert Administrative & Economic Consultancy in the UAE",
   description:
-    "From company formation and market entry to operational excellence and long-term growth, we guide you with clarity, innovation, and reliability.",
+    "Specialized in administrative consultancy, economic feasibility studies, and strategic business analysis to drive informed decision-making and sustainable growth.",
   brandBlurb:
-    "At Smart Path Consultancy, every successful business begins with a clear vision and a smart path forward. We specialize in expert consultancy tailored to the dynamic needs of entrepreneurs, startups, and enterprises—from company formation and market entry to operational excellence and long-term growth planning. With deep regional insights and a results-driven approach, we're your trusted partner in building a smarter, more successful future.",
+    "At Smart Path Consultancy, we provide expert administrative consultancy and economic feasibility studies tailored to the UAE market. Our specialized services include comprehensive administrative process optimization, detailed economic analysis, strategic planning, and regulatory compliance studies. With deep expertise in UAE business regulations and market dynamics, we help organizations make informed decisions through rigorous analysis and strategic guidance.",
   contact: {
     email: "info@smartpath.ae",
     phone: "+971-000-0000",
@@ -18,43 +18,67 @@ export const SITE_CONFIG = {
 
 export const SERVICES = [
   {
-    title: "Company Formation",
-    description: "Mainland/Free Zone guidance tailored to your needs",
+    title: "Administrative Consultancy & Studies",
+    description: "Comprehensive administrative support and strategic studies to optimize your business operations and governance",
     icon: "building",
+    features: ["Organizational structure analysis", "Administrative process optimization", "Policy development & implementation", "Governance framework design"],
+    duration: "4-8 weeks",
+    price: "From AED 12,000",
+    popular: true,
   },
   {
-    title: "Market Entry Strategy",
-    description: "Research, positioning, and go-to-market planning",
+    title: "Economic Feasibility Studies",
+    description: "Detailed economic analysis and feasibility studies to validate business concepts and investment decisions",
     icon: "target",
+    features: ["Market feasibility analysis", "Financial projections & modeling", "ROI & payback calculations", "Risk assessment & mitigation"],
+    duration: "6-12 weeks",
+    price: "From AED 18,000",
+    popular: true,
   },
   {
-    title: "Regulatory Navigation",
-    description: "Licensing and compliance across UAE jurisdictions",
-    icon: "shield",
-  },
-  {
-    title: "Operational Excellence",
-    description: "Processes, org design, and KPI frameworks",
+    title: "Business Process Optimization",
+    description: "Streamline operations through systematic analysis and improvement of business processes",
     icon: "settings",
+    features: ["Process mapping & analysis", "Workflow optimization", "Efficiency improvement strategies", "Performance measurement systems"],
+    duration: "4-10 weeks",
+    price: "From AED 15,000",
+    popular: false,
   },
   {
-    title: "Long-Term Growth Planning",
-    description: "Executable roadmaps and OKRs",
+    title: "Strategic Planning & Development",
+    description: "Comprehensive strategic planning services to guide long-term business growth and development",
     icon: "trending-up",
+    features: ["Strategic planning workshops", "Business development strategies", "Growth planning & roadmaps", "Implementation support"],
+    duration: "8-16 weeks",
+    price: "From AED 25,000",
+    popular: false,
   },
   {
-    title: "Expansion & Performance Optimization",
-    description: "New markets, margin, scalability",
+    title: "Regulatory Compliance Studies",
+    description: "Ensure full compliance with UAE regulations through comprehensive compliance analysis and implementation",
+    icon: "shield",
+    features: ["Compliance gap analysis", "Regulatory requirement mapping", "Compliance framework design", "Implementation guidance"],
+    duration: "3-8 weeks",
+    price: "From AED 10,000",
+    popular: false,
+  },
+  {
+    title: "Market Research & Analysis",
+    description: "In-depth market research and analysis to support informed business decisions and market entry strategies",
     icon: "rocket",
+    features: ["Market size & trend analysis", "Competitive landscape assessment", "Customer behavior studies", "Market entry strategies"],
+    duration: "6-14 weeks",
+    price: "From AED 20,000",
+    popular: false,
   },
 ] as const
 
 export const PROCESS_STEPS = [
-  { title: "Discover", description: "Understanding your business goals and challenges" },
-  { title: "Strategize", description: "Developing tailored solutions and roadmaps" },
-  { title: "Launch", description: "Implementing strategies with precision" },
-  { title: "Optimize", description: "Fine-tuning for maximum performance" },
-  { title: "Grow", description: "Scaling your success sustainably" },
+  { title: "Analyze", description: "Comprehensive assessment of administrative processes and economic factors" },
+  { title: "Study", description: "Detailed feasibility analysis and economic modeling" },
+  { title: "Design", description: "Developing optimized administrative frameworks and strategies" },
+  { title: "Implement", description: "Executing solutions with precision and monitoring" },
+  { title: "Validate", description: "Measuring outcomes and ensuring sustainable results" },
 ] as const
 
 export const TESTIMONIALS = [
