@@ -9,19 +9,18 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 const navigation = [
-  { name: "Services", href: "/services" },
-  { name: "About", href: "/about" },
+  { name: "Home", href: "#home" },
   { name: "Process", href: "#process" },
   { name: "Testimonials", href: "#testimonials" },
   { name: "FAQs", href: "#faqs" },
   { name: "Contact", href: "#contact" },
+  { name: "Services", href: "/services" },
+  { name: "About", href: "/about" },
 ]
 
 const socialLinks = [
   { icon: Facebook, href: "#", label: "Facebook" },
-  { icon: Instagram, href: "#", label: "Instagram" },
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
+  { icon: Instagram, href: "#", label: "Instagram" }
 ]
 
 export function Navbar() {
@@ -49,12 +48,36 @@ export function Navbar() {
     return () => window.removeEventListener("keydown", onKey)
   }, [])
 
+  // Lock background scroll when mobile menu is open
   useEffect(() => {
-    const onHash = () => setCurrentHash(window.location.hash)
+    const originalHtmlOverflow = document.documentElement.style.overflow
+    const originalBodyOverflow = document.body.style.overflow
+    if (mobileMenuOpen) {
+      document.documentElement.style.overflow = "hidden"
+      document.body.style.overflow = "hidden"
+    } else {
+      document.documentElement.style.overflow = originalHtmlOverflow || ""
+      document.body.style.overflow = originalBodyOverflow || ""
+    }
+    return () => {
+      document.documentElement.style.overflow = originalHtmlOverflow
+      document.body.style.overflow = originalBodyOverflow
+    }
+  }, [mobileMenuOpen])
+
+  useEffect(() => {
+    const onHash = () => {
+      const hash = window.location.hash
+      if (pathname === "/" && (!hash || hash === "")) {
+        setCurrentHash("#home")
+      } else {
+        setCurrentHash(hash)
+      }
+    }
     onHash()
     window.addEventListener("hashchange", onHash)
     return () => window.removeEventListener("hashchange", onHash)
-  }, [])
+  }, [pathname])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 2)
@@ -122,57 +145,57 @@ export function Navbar() {
   }
 
   return (
-    <header
-      className="relative bg-background"
-    >
-      <div>
-        <Container>
-          <div className="flex items-center justify-between py-3">
-            <Link href="/" className="flex items-center">
-              <div className="relative">
-                <span className="text-xl sm:text-2xl leading-tight font-bold text-foreground">Smart Path</span>
-                <span className="text-xl sm:text-2xl leading-tight font-bold text-primary ml-2">Consultancy</span>
-              </div>
-            </Link>
-
-            <div className="hidden xl:flex items-center space-x-8">
-              <div className="flex items-center space-x-2 text-muted-foreground">
-                <MapPin className="h-4 w-4 text-primary" />
-                <div className="text-sm">
-                  <div className="font-medium">Business Bay, Dubai</div>
-                  <div>United Arab Emirates</div>
+    <>
+      <header className="relative bg-background">
+        <div>
+          <Container>
+            <div className="flex items-center justify-between py-3">
+              <Link href="/" className="flex items-center">
+                <div className="relative">
+                  <span className="text-xl sm:text-2xl leading-tight font-bold text-foreground">Smart Path</span>
+                  <span className="text-xl sm:text-2xl leading-tight font-bold text-primary ml-2">Consultancy</span>
                 </div>
-              </div>
+              </Link>
 
-              <div className="flex items-center space-x-2 text-muted-foreground">
-                <Clock className="h-4 w-4 text-primary" />
-                <div className="text-sm">
-                  <div className="font-medium">Sun - Thu 9.00 - 18.00</div>
-                  <div>Friday & Saturday CLOSED</div>
+              <div className="hidden xl:flex items-center space-x-8">
+                <div className="flex items-center space-x-2 text-muted-foreground">
+                  <MapPin className="h-4 w-4 text-primary" />
+                  <div className="text-sm">
+                    <div className="font-medium">Business Bay, Dubai</div>
+                    <div>United Arab Emirates</div>
+                  </div>
                 </div>
-              </div>
 
-              <div className="flex items-center space-x-2 text-muted-foreground">
-                <Phone className="h-4 w-4 text-primary" />
-                <div className="text-sm">
-                  <div className="font-medium">+971-4-123-4567</div>
-                  <div>Free consultation</div>
+                <div className="flex items-center space-x-2 text-muted-foreground">
+                  <Clock className="h-4 w-4 text-primary" />
+                  <div className="text-sm">
+                    <div className="font-medium">Sun - Thu 9.00 - 18.00</div>
+                    <div>Friday & Saturday CLOSED</div>
+                  </div>
                 </div>
-              </div>
 
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={toggleTheme}
-                className="text-foreground hover:text-primary hover:bg-muted"
-                aria-label="Toggle theme"
-              >
-                {mounted ? (theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />) : <span className="inline-block h-4 w-4" />}
-              </Button>
+                <div className="flex items-center space-x-2 text-muted-foreground">
+                  <Phone className="h-4 w-4 text-primary" />
+                  <div className="text-sm">
+                    <div className="font-medium">+971-4-123-4567</div>
+                    <div>Free consultation</div>
+                  </div>
+                </div>
+
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={toggleTheme}
+                  className="text-foreground hover:text-primary hover:bg-muted"
+                  aria-label="Toggle theme"
+                >
+                  {mounted ? (theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />) : <span className="inline-block h-4 w-4" />}
+                </Button>
+              </div>
             </div>
-          </div>
-        </Container>
-      </div>
+          </Container>
+        </div>
+      </header>
 
       <div
         className={`sticky top-0 z-50 border-b border-border bg-background transition-shadow ${
@@ -181,7 +204,7 @@ export function Navbar() {
       >
         <Container>
           <nav className="relative flex items-center justify-center py-3 min-h-14">
-            <div className="flex lg:hidden">
+            <div className="flex lg:hidden absolute right-0 top-1/2 -translate-y-1/2">
               <Button
                 variant="ghost"
                 size="sm"
@@ -263,7 +286,7 @@ export function Navbar() {
                 onClick={() => setMobileMenuOpen(false)}
               />
               {/* Off-canvas panel */}
-              <div className="fixed right-0 top-0 bottom-0 z-50 w-80 max-w-[90vw] bg-card border-l border-border shadow-xl transform transition-transform duration-300 translate-x-0">
+              <div className="fixed right-0 top-0 bottom-0 z-50 w-80 max-w-[90vw] bg-card border-l border-border shadow-xl transform transition-transform duration-300 translate-x-0 overflow-y-auto overscroll-contain">
                 <div className="flex items-center justify-between px-4 py-4 border-b border-border">
                   <Link href="/" onClick={() => setMobileMenuOpen(false)} className="flex items-baseline">
                     <span className="text-xl font-bold text-foreground">Smart Path</span>
@@ -379,6 +402,6 @@ export function Navbar() {
           )}
         </Container>
       </div>
-    </header>
+    </>
   )
 }

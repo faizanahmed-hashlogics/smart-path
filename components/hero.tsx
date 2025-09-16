@@ -28,7 +28,7 @@ export function Hero() {
   }
 
   return (
-    <Section className="relative overflow-hidden min-h-screen">
+    <Section id="home" className="relative overflow-hidden min-h-1/2 py-0">
       <div className="absolute inset-0">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -40,7 +40,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-black/40" />
       </div>
 
-      <Container className="relative z-10 flex items-center min-h-screen">
+      <Container className="relative z-10 flex items-center min-h-80">
         <div className="mx-auto max-w-4xl text-center text-white">
           <h1 className="font-heading text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl text-balance">
             Transform Your Business in the UAE
