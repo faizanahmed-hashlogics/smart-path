@@ -1,0 +1,35 @@
+{
+  "navbar": {
+    "brand": { "primary": "Smart Path", "secondary": "Consultancy" },
+    "location": { "line1": "Business Bay, Dubai", "line2": "United Arab Emirates" },
+    "hours": { "line1": "Sun - Thu 9.00 - 18.00", "line2": "Friday & Saturday CLOSED" },
+    "phone": { "number": "+971-4-123-4567", "line2": "Free consultation" },
+    "theme": "Theme",
+    "contact_cta": "Contact us",
+    "language": "Language",
+    "social": { "facebook": "Facebook", "instagram": "Instagram" },
+    "nav": {
+      "home": "Home",
+      "process": "Process",
+      "testimonials": "Testimonials",
+      "faqs": "FAQs",
+      "contact": "Contact",
+      "services": "Services",
+      "about": "About"
+    }
+  },
+  "hero": {
+    "title": "Expert Administrative & Economic Consultancy in the UAE",
+    "subtitle": "Specialized administrative consultancy and economic feasibility studies to drive informed decision-making and sustainable growth",
+    "description": "Specialized in administrative consultancy, economic feasibility studies, and strategic business analysis to drive informed decision-making and sustainable growth.",
+    "cta": {
+      "primary": "Get a Free Consultation",
+      "secondary": "Explore Services"
+    }
+  }
+  ,
+  "languageMenu": {
+    "english": "English",
+    "arabic": "Arabic"
+  }
+}

@@ -2,11 +2,12 @@
 
 import { Container } from "@/components/ui/container"
 import { Section } from "@/components/ui/section"
-import { SITE_CONFIG } from "@/lib/constants"
 import { LiquidButton } from "@/components/animate-ui/buttons/liquid"
 import { useState, useEffect } from "react"
+import { useTranslation } from "react-i18next"
 
 export function Hero() {
+  const { t } = useTranslation()
   const [parallaxOffset, setParallaxOffset] = useState(0)
 
   useEffect(() => {
@@ -43,26 +44,26 @@ export function Hero() {
       <Container className="relative z-10 flex items-center min-h-80">
         <div className="mx-auto max-w-4xl text-center text-white">
           <h1 className="font-heading text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl text-balance">
-            Expert Administrative & Economic Consultancy in the UAE
+            {t("hero.title")}
           </h1>
           <p className="mt-6 text-lg leading-8 text-gray-200 max-w-2xl mx-auto">
-            Specialized administrative consultancy and economic feasibility studies to drive informed decision-making and sustainable growth
+            {t("hero.subtitle")}
           </p>
-          <p className="mt-4 text-base leading-7 text-gray-300 max-w-3xl mx-auto">{SITE_CONFIG.description}</p>
+          <p className="mt-4 text-base leading-7 text-gray-300 max-w-3xl mx-auto">{t("hero.description")}</p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <LiquidButton
               size="lg"
               onClick={() => scrollToSection("#contact")}
               className="neon-glow text-base"
             >
-              Get a Free Consultation
+              {t("hero.cta.primary")}
             </LiquidButton>
             <LiquidButton
               size="lg"
               onClick={() => scrollToSection("#services")}
               className="neon-glow text-base"
             >
-              Explore Services
+              {t("hero.cta.secondary")}
             </LiquidButton>
           </div>
         </div>

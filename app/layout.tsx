@@ -3,6 +3,8 @@ import type { Metadata } from "next"
 import { Inter, Crimson_Text } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import { I18nProvider } from "@/components/i18n/provider"
+import { LanguageHydrator } from "@/components/i18n/language-hydrator"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -45,9 +47,12 @@ export default function RootLayout({
     <html lang="en" className={`${crimsonText.variable} ${inter.variable}`} suppressHydrationWarning>
       <head />
       <body className="antialiased">
-        <ThemeProvider defaultTheme="light" storageKey="smart-path-theme">
-          {children}
-        </ThemeProvider>
+        <I18nProvider>
+          <ThemeProvider defaultTheme="light" storageKey="smart-path-theme">
+            {children}
+          </ThemeProvider>
+          <LanguageHydrator />
+        </I18nProvider>
       </body>
     </html>
   )

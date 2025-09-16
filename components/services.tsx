@@ -9,6 +9,7 @@ import { Building, Target, Shield, Settings, TrendingUp, Rocket, ChevronRight, C
 import { AEDIcon } from "@/components/ui/aed-icon"
 import { SERVICES } from "@/lib/constants"
 import { useState } from "react"
+import Link from "next/link"
 
 const iconMap = {
   building: Building,
@@ -53,6 +54,7 @@ export function Services() {
                 } ${isExpanded ? 'md:col-span-2 lg:col-span-1' : ''}`}
                 onMouseEnter={() => setExpandedCard(index)}
                 onMouseLeave={() => setExpandedCard(null)}
+                onClick={() => setExpandedCard(isExpanded ? null : index)}
               >
                 {service.popular && (
                   <div className="absolute top-4 right-4">
@@ -118,13 +120,15 @@ export function Services() {
 
                     {/* CTA Button */}
                     <div className="pt-4">
-                      <Button 
-                        className="w-full group/btn bg-primary hover:bg-primary/90 text-primary-foreground transition-all duration-300"
-                        size="lg"
-                      >
-                        <span>Get Started</span>
-                        <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
-                      </Button>
+                      <Link href="/#contact" className="block">
+                        <Button 
+                          className="w-full group/btn bg-primary hover:bg-primary/90 text-primary-foreground transition-all duration-300"
+                          size="lg"
+                        >
+                          <span>Get Started</span>
+                          <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </CardContent>

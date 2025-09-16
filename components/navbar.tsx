@@ -7,15 +7,17 @@ import { Menu, X, MapPin, Clock, Phone, Facebook, Instagram, Twitter, Linkedin, 
 import { useTheme } from "@/components/theme-provider"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { useTranslation } from "react-i18next"
+import { LanguageSwitcher } from "@/components/i18n/language-switcher"
 
 const navigation = [
-  { name: "Home", href: "#home" },
-  { name: "Process", href: "#process" },
-  { name: "Testimonials", href: "#testimonials" },
-  { name: "FAQs", href: "#faqs" },
-  { name: "Contact", href: "#contact" },
-  { name: "Services", href: "/services" },
-  { name: "About", href: "/about" },
+  { key: "home", href: "/", sectionId: "home" },
+  { key: "process", href: "/process", sectionId: "process" },
+  { key: "testimonials", href: "/testimonials", sectionId: "testimonials" },
+  { key: "faqs", href: "/faqs", sectionId: "faqs" },
+  { key: "contact", href: "/contact", sectionId: "contact" },
+  { key: "services", href: "/services" },
+  { key: "about", href: "/about" },
 ]
 
 const socialLinks = [
@@ -24,12 +26,14 @@ const socialLinks = [
 ]
 
 export function Navbar() {
+  const { t } = useTranslation()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
   const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [currentHash, setCurrentHash] = useState<string>("")
+  const [currentSectionRoute, setCurrentSectionRoute] = useState<string | null>(null)
 
   useEffect(() => {
     setMounted(true)
@@ -86,29 +90,33 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
-  // Scrollspy: highlight nav item based on section in view (homepage only)
+  // Scrollspy: on homepage, observe sections by ID and map to routes for active highlight
   useEffect(() => {
     if (pathname !== "/") return
 
-    const sectionIds = navigation
-      .filter((n) => n.href.startsWith("#"))
-      .map((n) => n.href.slice(1))
+    const map: { id: string; href: string }[] = [
+      { id: "home", href: "/" },
+      { id: "process", href: "/process" },
+      { id: "testimonials", href: "/testimonials" },
+      { id: "faqs", href: "/faqs" },
+      { id: "contact", href: "/contact" },
+    ]
 
-    const sections = sectionIds
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => !!el)
+    const elements = map
+      .map((m) => ({ m, el: document.getElementById(m.id) }))
+      .filter((x): x is { m: { id: string; href: string }; el: HTMLElement } => !!x.el)
 
-    if (sections.length === 0) return
+    if (elements.length === 0) return
 
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries
           .filter((e) => e.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
-
         if (visible[0]) {
           const id = (visible[0].target as Element).id
-          setCurrentHash(`#${id}`)
+          const found = map.find((m) => m.id === id)
+          if (found) setCurrentSectionRoute(found.href)
         }
       },
       {
@@ -118,8 +126,7 @@ export function Navbar() {
       }
     )
 
-    sections.forEach((el) => observer.observe(el))
-
+    elements.forEach(({ el }) => observer.observe(el))
     return () => observer.disconnect()
   }, [pathname])
 
@@ -140,7 +147,9 @@ export function Navbar() {
   }
 
   const isActive = (href: string) => {
-    if (href.startsWith("#")) return pathname === "/" && currentHash === href
+    if (pathname === "/" && currentSectionRoute) {
+      return currentSectionRoute === href
+    }
     return pathname === href
   }
 
@@ -152,8 +161,8 @@ export function Navbar() {
             <div className="flex items-center justify-between py-3">
               <Link href="/" className="flex items-center">
                 <div className="relative">
-                  <span className="text-xl sm:text-2xl leading-tight font-bold text-foreground">Smart Path</span>
-                  <span className="text-xl sm:text-2xl leading-tight font-bold text-primary ml-2">Consultancy</span>
+                  <span className="text-xl sm:text-2xl leading-tight font-bold text-foreground">{t("navbar.brand.primary")}</span>
+                  <span className="text-xl sm:text-2xl leading-tight font-bold text-primary ml-2">{t("navbar.brand.secondary")}</span>
                 </div>
               </Link>
 
@@ -161,36 +170,26 @@ export function Navbar() {
                 <div className="flex items-center space-x-2 text-muted-foreground">
                   <MapPin className="h-4 w-4 text-primary" />
                   <div className="text-sm">
-                    <div className="font-medium">Business Bay, Dubai</div>
-                    <div>United Arab Emirates</div>
+                    <div className="font-medium">{t("navbar.location.line1")}</div>
+                    <div>{t("navbar.location.line2")}</div>
                   </div>
                 </div>
 
                 <div className="flex items-center space-x-2 text-muted-foreground">
                   <Clock className="h-4 w-4 text-primary" />
                   <div className="text-sm">
-                    <div className="font-medium">Sun - Thu 9.00 - 18.00</div>
-                    <div>Friday & Saturday CLOSED</div>
+                    <div className="font-medium">{t("navbar.hours.line1")}</div>
+                    <div>{t("navbar.hours.line2")}</div>
                   </div>
                 </div>
 
                 <div className="flex items-center space-x-2 text-muted-foreground">
                   <Phone className="h-4 w-4 text-primary" />
                   <div className="text-sm">
-                    <div className="font-medium">+971-4-123-4567</div>
-                    <div>Free consultation</div>
+                    <div className="font-medium">{t("navbar.phone.number")}</div>
+                    <div>{t("navbar.phone.line2")}</div>
                   </div>
                 </div>
-
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={toggleTheme}
-                  className="text-foreground hover:text-primary hover:bg-muted"
-                  aria-label="Toggle theme"
-                >
-                  {mounted ? (theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />) : <span className="inline-block h-4 w-4" />}
-                </Button>
               </div>
             </div>
           </Container>
@@ -218,53 +217,55 @@ export function Navbar() {
 
             <div className="hidden lg:flex lg:gap-x-8">
               {navigation.map((item) => {
-                if (item.href.startsWith("#")) {
-                  return pathname === "/" ? (
+                const label = t(`navbar.nav.${item.key}`)
+                const isHome = pathname === "/"
+                if (isHome && item.sectionId) {
+                  return (
                     <button
-                      key={item.name}
-                      onClick={() => scrollToSection(item.href)}
-                      className={`inline-flex items-center h-10 px-3 rounded-sm text-sm font-medium tracking-wide transition-colors ${
+                      key={item.key}
+                      onClick={() => {
+                        scrollToSection(`#${item.sectionId}`)
+                        setCurrentSectionRoute(item.href)
+                      }}
+                      className={`inline-flex items-center h-10 px-3 rounded-sm text-sm font-medium tracking-wide transition-colors cursor-pointer ${
                         isActive(item.href)
                           ? "bg-primary/10 text-primary"
                           : "text-muted-foreground hover:text-foreground hover:bg-muted"
                       }`}
                       aria-current={isActive(item.href) ? "page" : undefined}
                     >
-                      <span>{item.name}</span>
+                      <span>{label}</span>
                     </button>
-                  ) : (
-                    <Link
-                      key={item.name}
-                      href={`/${item.href}`}
-                      className={`inline-flex items-center h-10 px-3 rounded-sm text-sm font-medium tracking-wide transition-colors ${
-                        isActive(item.href)
-                          ? "bg-primary/10 text-primary"
-                          : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                      }`}
-                      aria-current={isActive(item.href) ? "page" : undefined}
-                    >
-                      <span>{item.name}</span>
-                    </Link>
                   )
                 }
                 return (
                   <Link
-                    key={item.name}
+                    key={item.key}
                     href={item.href}
-                    className={`inline-flex items-center h-10 px-3 rounded-sm text-sm font-medium tracking-wide transition-colors ${
+                    className={`inline-flex items-center h-10 px-3 rounded-sm text-sm font-medium tracking-wide transition-colors cursor-pointer ${
                       isActive(item.href)
                         ? "bg-primary/10 text-primary"
                         : "text-muted-foreground hover:text-foreground hover:bg-muted"
                     }`}
                     aria-current={isActive(item.href) ? "page" : undefined}
                   >
-                    <span>{item.name}</span>
+                    <span>{label}</span>
                   </Link>
                 )
               })}
             </div>
 
             <div className="hidden lg:flex items-center space-x-3 absolute right-0 top-1/2 -translate-y-1/2">
+              <LanguageSwitcher />
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={toggleTheme}
+                className="text-foreground hover:text-primary hover:bg-muted"
+                aria-label="Toggle theme"
+              >
+                {mounted ? (theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />) : <span className="inline-block h-4 w-4" />}
+              </Button>
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
@@ -289,8 +290,8 @@ export function Navbar() {
               <div className="fixed right-0 top-0 bottom-0 z-50 w-80 max-w-[90vw] bg-card border-l border-border shadow-xl transform transition-transform duration-300 translate-x-0 overflow-y-auto overscroll-contain">
                 <div className="flex items-center justify-between px-4 py-4 border-b border-border">
                   <Link href="/" onClick={() => setMobileMenuOpen(false)} className="flex items-baseline">
-                    <span className="text-xl font-bold text-foreground">Smart Path</span>
-                    <span className="text-xl font-bold text-primary ml-2">Consultancy</span>
+                    <span className="text-xl font-bold text-foreground">{t("navbar.brand.primary")}</span>
+                    <span className="text-xl font-bold text-primary ml-2">{t("navbar.brand.secondary")}</span>
                   </Link>
                   <Button
                     variant="ghost"
@@ -305,73 +306,77 @@ export function Navbar() {
 
                 <nav className="px-2 py-4 space-y-1">
                   {navigation.map((item) => {
-                    const commonClasses = `flex items-center justify-between w-full text-left px-3 py-3 rounded-md text-base font-medium transition-colors ${
+                    const label = t(`navbar.nav.${item.key}`)
+                    const commonClasses = `flex items-center justify-between w-full text-left px-3 py-3 rounded-md text-base font-medium transition-colors cursor-pointer ${
                       isActive(item.href)
                         ? "text-primary bg-primary/10"
                         : "text-foreground hover:text-primary hover:bg-muted"
                     }`
-                    if (item.href.startsWith("#")) {
-                      return pathname === "/" ? (
+                    const isHome = pathname === "/"
+                    if (isHome && item.sectionId) {
+                      return (
                         <button
-                          key={item.name}
+                          key={item.key}
                           onClick={() => {
-                            scrollToSection(item.href)
+                            scrollToSection(`#${item.sectionId}`)
+                            setCurrentSectionRoute(item.href)
                             setMobileMenuOpen(false)
                           }}
                           className={commonClasses}
                         >
-                          <span>{item.name}</span>
+                          <span>{label}</span>
                           <ChevronRight className="h-4 w-4 opacity-70" />
                         </button>
-                      ) : (
-                        <Link key={item.name} href={`/${item.href}`} onClick={() => setMobileMenuOpen(false)} className={commonClasses}>
-                          <span>{item.name}</span>
-                          <ChevronRight className="h-4 w-4 opacity-70" />
-                        </Link>
                       )
                     }
                     return (
-                      <Link key={item.name} href={item.href} onClick={() => setMobileMenuOpen(false)} className={commonClasses}>
-                        <span>{item.name}</span>
+                      <Link key={item.key} href={item.href} onClick={() => setMobileMenuOpen(false)} className={commonClasses}>
+                        <span>{label}</span>
                         <ChevronRight className="h-4 w-4 opacity-70" />
                       </Link>
                     )
                   })}
                 </nav>
 
-                <div className="px-4 py-3 border-t border-border flex items-center justify-between">
-                  <span className="text-base font-medium text-foreground">Theme</span>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={toggleTheme}
-                    className="text-foreground hover:text-primary hover:bg-muted"
-                    aria-label="Toggle theme"
-                  >
-                    {mounted ? (theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />) : <span className="inline-block h-5 w-5" />}
-                  </Button>
+                <div className="px-4 py-3 border-t border-border space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-base font-medium text-foreground">{t("navbar.theme")}</span>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={toggleTheme}
+                      className="text-foreground hover:text-primary hover:bg-muted"
+                      aria-label="Toggle theme"
+                    >
+                      {mounted ? (theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />) : <span className="inline-block h-5 w-5" />}
+                    </Button>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-base font-medium text-foreground">{t("navbar.language")}</span>
+                    <LanguageSwitcher />
+                  </div>
                 </div>
                 {/* Compact contact info on mobile */}
                 <div className="px-4 py-3 border-t border-border space-y-2">
                   <div className="flex items-start gap-2 text-sm text-muted-foreground">
                     <MapPin className="h-4 w-4 text-primary mt-0.5" />
                     <div>
-                      <div className="font-medium text-foreground">Business Bay, Dubai</div>
-                      <div>United Arab Emirates</div>
+                      <div className="font-medium text-foreground">{t("navbar.location.line1")}</div>
+                      <div>{t("navbar.location.line2")}</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-2 text-sm text-muted-foreground">
                     <Clock className="h-4 w-4 text-primary mt-0.5" />
                     <div>
-                      <div className="font-medium text-foreground">Sun - Thu 9.00 - 18.00</div>
-                      <div>Friday & Saturday CLOSED</div>
+                      <div className="font-medium text-foreground">{t("navbar.hours.line1")}</div>
+                      <div>{t("navbar.hours.line2")}</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-2 text-sm text-muted-foreground">
                     <Phone className="h-4 w-4 text-primary mt-0.5" />
                     <div>
-                      <div className="font-medium text-foreground">+971-4-123-4567</div>
-                      <div>Free consultation</div>
+                      <div className="font-medium text-foreground">{t("navbar.phone.number")}</div>
+                      <div>{t("navbar.phone.line2")}</div>
                     </div>
                   </div>
                 </div>
@@ -382,7 +387,7 @@ export function Navbar() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="w-full inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground px-4 py-2 text-sm font-medium hover:opacity-90 transition"
                   >
-                    Contact us
+                    {t("navbar.contact_cta")}
                   </Link>
                   <div className="flex items-center space-x-4 mt-4">
                     {socialLinks.map((social) => (
