@@ -23,16 +23,30 @@ export function Contact() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setError(null)
     setIsSubmitting(true)
-
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+      const data = await res.json()
+      if (!res.ok || !data?.ok) {
+        throw new Error(data?.error || "Failed to send message")
+      }
+      setIsSubmitted(true)
+      // Optionally clear form
+      setFormData({ name: "", email: "", phone: "", company: "", message: "" })
+    } catch (err: any) {
+      setError(err?.message || "Something went wrong. Please try again later.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -52,7 +66,7 @@ export function Contact() {
             </div>
             <h2 className="font-heading text-3xl font-bold mb-4">Thank You!</h2>
             <p className="text-lg text-muted-foreground mb-8">
-              We've received your message and will get back to you within 24 hours.
+              We’d love to hear from you — we’ll reach you soon. Our team will get back to you within 24 hours.
             </p>
             <Button onClick={() => setIsSubmitted(false)} variant="outline">
               Send Another Message
@@ -148,6 +162,12 @@ export function Contact() {
                     placeholder="Tell us about your business goals and how we can help..."
                   />
                 </div>
+
+                {error && (
+                  <div className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-md p-3">
+                    {error}
+                  </div>
+                )}
 
                 <Button type="submit" className="w-full neon-glow" disabled={isSubmitting}>
                   {isSubmitting ? "Sending..." : "Send Message"}

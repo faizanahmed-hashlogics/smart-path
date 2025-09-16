@@ -6,7 +6,7 @@ export const SITE_CONFIG = {
   brandBlurb:
     "At Smart Path Consultancy, we provide expert administrative consultancy and economic feasibility studies tailored to the UAE market. Our specialized services include comprehensive administrative process optimization, detailed economic analysis, strategic planning, and regulatory compliance studies. With deep expertise in UAE business regulations and market dynamics, we help organizations make informed decisions through rigorous analysis and strategic guidance.",
   contact: {
-    email: "info@smartpath.ae",
+    email: "info@smartpath-consultancy.com",
     phone: "+971-000-0000",
     whatsapp: "https://wa.me/971000000000",
     location: "Dubai, UAE",
