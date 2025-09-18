@@ -5,6 +5,8 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { I18nProvider } from "@/components/i18n/provider"
 import { LanguageHydrator } from "@/components/i18n/language-hydrator"
+import { NavigationProgress } from "@/components/navigation-progress"
+import { ScrollProgressBar } from "@/components/scroll-progress"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -49,6 +51,8 @@ export default function RootLayout({
       <body className="antialiased">
         <I18nProvider>
           <ThemeProvider defaultTheme="light" storageKey="smart-path-theme">
+            <ScrollProgressBar />
+            <NavigationProgress />
             {children}
           </ThemeProvider>
           <LanguageHydrator />

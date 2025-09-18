@@ -218,26 +218,6 @@ export function Navbar() {
             <div className="hidden lg:flex lg:gap-x-8">
               {navigation.map((item) => {
                 const label = t(`navbar.nav.${item.key}`)
-                const isHome = pathname === "/"
-                if (isHome && item.sectionId) {
-                  return (
-                    <button
-                      key={item.key}
-                      onClick={() => {
-                        scrollToSection(`#${item.sectionId}`)
-                        setCurrentSectionRoute(item.href)
-                      }}
-                      className={`inline-flex items-center h-10 px-3 rounded-sm text-sm font-medium tracking-wide transition-colors cursor-pointer ${
-                        isActive(item.href)
-                          ? "bg-primary/10 text-primary"
-                          : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                      }`}
-                      aria-current={isActive(item.href) ? "page" : undefined}
-                    >
-                      <span>{label}</span>
-                    </button>
-                  )
-                }
                 return (
                   <Link
                     key={item.key}
@@ -312,23 +292,6 @@ export function Navbar() {
                         ? "text-primary bg-primary/10"
                         : "text-foreground hover:text-primary hover:bg-muted"
                     }`
-                    const isHome = pathname === "/"
-                    if (isHome && item.sectionId) {
-                      return (
-                        <button
-                          key={item.key}
-                          onClick={() => {
-                            scrollToSection(`#${item.sectionId}`)
-                            setCurrentSectionRoute(item.href)
-                            setMobileMenuOpen(false)
-                          }}
-                          className={commonClasses}
-                        >
-                          <span>{label}</span>
-                          <ChevronRight className="h-4 w-4 opacity-70" />
-                        </button>
-                      )
-                    }
                     return (
                       <Link key={item.key} href={item.href} onClick={() => setMobileMenuOpen(false)} className={commonClasses}>
                         <span>{label}</span>

@@ -60,7 +60,7 @@ export function VideoSection() {
         <div className="absolute inset-0 bg-black/50 z-10" />
       </div>
 
-      <Container className="relative z-20">
+      <Container className="relative z-20 py-4 md:py-0">
         <div className="max-w-4xl mx-auto text-center text-white">
           <div className="mb-12 space-y-6">
             <h2 className="text-4xl md:text-5xl font-bold mb-8">Connecting the dots. It's what we do.</h2>

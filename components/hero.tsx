@@ -9,16 +9,27 @@ import { useTranslation } from "react-i18next"
 export function Hero() {
   const { t } = useTranslation()
   const [parallaxOffset, setParallaxOffset] = useState(0)
+  const [enableParallax, setEnableParallax] = useState(false)
 
   useEffect(() => {
+    if (typeof window === "undefined") return
+    const mql = window.matchMedia("(min-width: 768px)")
+    const updateParallaxEnabled = () => setEnableParallax(mql.matches)
+    updateParallaxEnabled()
+    mql.addEventListener?.("change", updateParallaxEnabled)
+
     const handleScroll = () => {
+      if (!mql.matches) return
       const scrolled = window.pageYOffset
       const parallax = scrolled * 0.5 // Adjust speed by changing multiplier
       setParallaxOffset(parallax)
     }
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => {
+      mql.removeEventListener?.("change", updateParallaxEnabled)
+      window.removeEventListener("scroll", handleScroll)
+    }
   }, [])
 
   const scrollToSection = (href: string) => {
@@ -29,19 +40,19 @@ export function Hero() {
   }
 
   return (
-    <Section id="home" className="relative overflow-hidden min-h-1/2 py-0">
+    <Section id="home" className="relative overflow-hidden min-h-[65vh] md:min-h-[75vh] py-4 md:py-0">
       <div className="absolute inset-0">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: `url(/images/dubai-skyline.webp)`,
-            transform: `translateY(${parallaxOffset}px) scale(1.1)`,
+            transform: enableParallax ? `translateY(${parallaxOffset}px) scale(1.1)` : "scale(1.1)",
           }}
         />
         <div className="absolute inset-0 bg-black/40" />
       </div>
 
-      <Container className="relative z-10 flex items-center min-h-80">
+      <Container className="relative z-10 flex items-center min-h-[20rem] sm:min-h-[24rem] md:min-h-[28rem]">
         <div className="mx-auto max-w-4xl text-center text-white">
           <h1 className="font-heading text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl text-balance">
             {t("hero.title")}

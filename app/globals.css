@@ -120,11 +120,17 @@
 }
 
 @layer base {
+  html {
+    /* Reserve space for the scrollbar to prevent layout shifts when overlays/dropdowns open */
+    scrollbar-gutter: stable both-edges;
+  }
   * {
     @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
+    /* Avoid accidental horizontal scrollbars from full-bleed sections/marquees */
+    overflow-x: clip;
   }
 
   .font-heading {
