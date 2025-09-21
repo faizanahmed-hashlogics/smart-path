@@ -18,57 +18,146 @@ export const SITE_CONFIG = {
 
 export const SERVICES = [
   {
-    title: "Administrative Consultancy & Studies",
-    description: "Comprehensive administrative support and strategic studies to optimize your business operations and governance",
-    icon: "building",
-    features: ["Organizational structure analysis", "Administrative process optimization", "Policy development & implementation", "Governance framework design"],
-    duration: "4-8 weeks",
-    price: "From AED 12,000",
-    popular: true,
-  },
-  {
-    title: "Economic Feasibility Studies",
-    description: "Detailed economic analysis and feasibility studies to validate business concepts and investment decisions",
-    icon: "target",
-    features: ["Market feasibility analysis", "Financial projections & modeling", "ROI & payback calculations", "Risk assessment & mitigation"],
-    duration: "6-12 weeks",
-    price: "From AED 18,000",
-    popular: true,
-  },
-  {
-    title: "Business Process Optimization",
-    description: "Streamline operations through systematic analysis and improvement of business processes",
+    title: "Accounting & Bookkeeping",
+    description: "Accurate, compliant accounting and bookkeeping tailored to your business needs",
     icon: "settings",
-    features: ["Process mapping & analysis", "Workflow optimization", "Efficiency improvement strategies", "Performance measurement systems"],
-    duration: "4-10 weeks",
-    price: "From AED 15,000",
-    popular: false,
+    features: [
+      "Recording income, expenses, and payments",
+      "Managing accounts payable and receivable (invoicing & tracking)",
+      "Maintaining up‑to‑date ledgers (GL & subsidiary)"
+    ],
+    duration: "Ongoing",
+    price: "Contact us",
+    popular: true,
   },
   {
-    title: "Strategic Planning & Development",
-    description: "Comprehensive strategic planning services to guide long-term business growth and development",
-    icon: "trending-up",
-    features: ["Strategic planning workshops", "Business development strategies", "Growth planning & roadmaps", "Implementation support"],
-    duration: "8-16 weeks",
-    price: "From AED 25,000",
-    popular: false,
-  },
-  {
-    title: "Regulatory Compliance Studies",
-    description: "Ensure full compliance with UAE regulations through comprehensive compliance analysis and implementation",
+    title: "Corporate Tax Consultancy",
+    description: "Navigate complex tax laws to minimize liabilities and optimize performance",
     icon: "shield",
-    features: ["Compliance gap analysis", "Regulatory requirement mapping", "Compliance framework design", "Implementation guidance"],
-    duration: "3-8 weeks",
-    price: "From AED 10,000",
+    features: [
+      "Tax planning and advisory",
+      "Regulatory compliance and filings",
+      "Tailored solutions to your business context"
+    ],
+    duration: "Varies by engagement",
+    price: "Contact us",
+    popular: true,
+  },
+  {
+    title: "VAT Consultancy",
+    description: "Expert VAT compliance, registration, return filing, and audit support",
+    icon: "shield",
+    features: [
+      "VAT registration and advisory",
+      "Accurate VAT calculation, reporting, and reclaim",
+      "Return filing, audits, and error/penalty prevention"
+    ],
+    duration: "Varies by engagement",
+    price: "Contact us",
     popular: false,
   },
   {
-    title: "Market Research & Analysis",
-    description: "In-depth market research and analysis to support informed business decisions and market entry strategies",
+    title: "Transfer Pricing Services",
+    description: "OECD‑aligned policies, documentation, and audits to reduce TP risk",
+    icon: "target",
+    features: [
+      "Transfer pricing documentation & policies",
+      "Compliance with OECD guidelines & local regulations",
+      "Audit readiness and dispute minimization"
+    ],
+    duration: "Varies by engagement",
+    price: "Contact us",
+    popular: false,
+  },
+  {
+    title: "Internal Audit Support",
+    description: "Plan, execute, and report internal audits to enhance control and compliance",
+    icon: "shield",
+    features: [
+      "Internal audit planning, execution, and reporting",
+      "Regulatory compliance reviews",
+      "Enhance internal controls and operational efficiency"
+    ],
+    duration: "Varies by engagement",
+    price: "Contact us",
+    popular: false,
+  },
+  {
+    title: "Business Advisory",
+    description: "Strategic guidance for growth, innovation, and operational excellence",
+    icon: "trending-up",
+    features: [
+      "Business planning and market analysis",
+      "Operational improvements",
+      "Financial management advisory"
+    ],
+    duration: "Varies by engagement",
+    price: "Contact us",
+    popular: false,
+  },
+  {
+    title: "Strategy & Transformation",
+    description: "Custom strategies and change programs to drive growth and efficiency",
     icon: "rocket",
-    features: ["Market size & trend analysis", "Competitive landscape assessment", "Customer behavior studies", "Market entry strategies"],
-    duration: "6-14 weeks",
-    price: "From AED 20,000",
+    features: [
+      "Strategy development and execution",
+      "Change management and digital transformation",
+      "Organizational design and cultural transformation"
+    ],
+    duration: "Varies by engagement",
+    price: "Contact us",
+    popular: false,
+  },
+  {
+    title: "Mergers & Acquisitions Support",
+    description: "Comprehensive support across the deal lifecycle for long‑term success",
+    icon: "building",
+    features: [
+      "Buy‑side/sell‑side advisory and due diligence",
+      "Deal structuring and regulatory coordination",
+      "Integration planning and execution"
+    ],
+    duration: "Varies by engagement",
+    price: "Contact us",
+    popular: false,
+  },
+  {
+    title: "Risk Advisory",
+    description: "Identify, assess, and mitigate risks impacting performance and compliance",
+    icon: "shield",
+    features: [
+      "Enterprise risk assessments",
+      "Regulatory compliance and controls",
+      "Risk mitigation strategies"
+    ],
+    duration: "Varies by engagement",
+    price: "Contact us",
+    popular: false,
+  },
+  {
+    title: "Technology Advisory",
+    description: "IT strategy, cybersecurity, and data analytics to power your business",
+    icon: "settings",
+    features: [
+      "IT strategy and digital transformation",
+      "Cybersecurity assessments",
+      "Data analytics and technology implementation"
+    ],
+    duration: "Varies by engagement",
+    price: "Contact us",
+    popular: false,
+  },
+  {
+    title: "Financial Management",
+    description: "Planning, budgeting, forecasting, and analysis to optimize results",
+    icon: "trending-up",
+    features: [
+      "Financial reporting and analysis",
+      "Cash flow management",
+      "Financial modelling and performance improvement"
+    ],
+    duration: "Varies by engagement",
+    price: "Contact us",
     popular: false,
   },
 ] as const

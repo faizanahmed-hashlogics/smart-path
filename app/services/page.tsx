@@ -22,13 +22,16 @@ export default function ServicesPage() {
             <div className="relative z-10 py-16 md:py-24">
               <div className="max-w-3xl">
                 <p className="text-sm uppercase tracking-[0.2em] text-accent mb-3">Our Expertise</p>
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">Administrative & Economic Consultancy</h1>
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">Financial Consultancy Services</h1>
+                <p className="mt-3 text-base sm:text-lg text-accent">
+                  Your Financial vision, our Expertise
+                </p>
                 <p className="mt-4 text-base sm:text-lg text-muted-foreground">
-                  Independent audits, rigorous feasibility studies, and defensible business cases that help leaders invest confidently,
-                  meet regulatory requirements, and unlock operational value.
+                  Accounting, tax, VAT, transfer pricing, internal audit, business advisory, strategy & transformation, M&A support,
+                  risk advisory, technology advisory, and financial management—tailored to your needs.
                 </p>
                 <div className="mt-6 flex flex-wrap gap-2">
-                  {["Audit", "Feasibility", "Financial Models", "Licensing", "Risk", "Implementation"].map((p) => (
+                  {["Accounting", "Tax", "VAT", "Transfer Pricing", "Internal Audit", "Advisory", "Strategy", "M&A", "Risk", "Technology", "Finance"].map((p) => (
                     <span key={p} className="text-xs rounded-full border border-border bg-background/70 px-3 py-1">{p}</span>
                   ))}
                 </div>

@@ -31,7 +31,7 @@ export function Footer() {
             <div className="mb-8 md:mb-0">
               <div className="font-heading text-xl font-bold text-primary mb-2">{SITE_CONFIG.name}</div>
               <p className="text-sm text-muted-foreground max-w-md">
-                Your Strategic Partner for Business Growth in the UAE
+                Expert Guidance for a secure Tomorrow
               </p>
             </div>
 

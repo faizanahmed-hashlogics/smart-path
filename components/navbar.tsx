@@ -6,6 +6,7 @@ import { Container } from "@/components/ui/container"
 import { Menu, X, MapPin, Clock, Phone, Facebook, Instagram, Twitter, Linkedin, Sun, Moon, ChevronRight } from "lucide-react"
 import { useTheme } from "@/components/theme-provider"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { useTranslation } from "react-i18next"
 import { LanguageSwitcher } from "@/components/i18n/language-switcher"
@@ -159,10 +160,26 @@ export function Navbar() {
         <div>
           <Container>
             <div className="flex items-center justify-between py-3">
-              <Link href="/" className="flex items-center">
-                <div className="relative">
-                  <span className="text-xl sm:text-2xl leading-tight font-bold text-foreground">{t("navbar.brand.primary")}</span>
-                  <span className="text-xl sm:text-2xl leading-tight font-bold text-primary ml-2">{t("navbar.brand.secondary")}</span>
+              <Link
+                href="/"
+                className="flex items-center gap-3"
+                aria-label={`${t("navbar.brand.primary")} ${t("navbar.brand.secondary")}`}
+              >
+                <Image
+                  src="/images/navbar-logo-black-color.png"
+                  alt="Smart Path Consultancy"
+                  width={160}
+                  height={40}
+                  className="h-10 sm:h-12 w-auto dark:invert"
+                  priority
+                />
+                <div className="flex items-baseline">
+                  <span className="text-lg sm:text-2xl leading-tight font-bold text-foreground">
+                    {t("navbar.brand.primary")}
+                  </span>
+                  <span className="text-lg sm:text-2xl leading-tight font-bold text-primary ml-2">
+                    {t("navbar.brand.secondary")}
+                  </span>
                 </div>
               </Link>
 
@@ -269,9 +286,27 @@ export function Navbar() {
               {/* Off-canvas panel */}
               <div className="fixed right-0 top-0 bottom-0 z-50 w-80 max-w-[90vw] bg-card border-l border-border shadow-xl transform transition-transform duration-300 translate-x-0 overflow-y-auto overscroll-contain">
                 <div className="flex items-center justify-between px-4 py-4 border-b border-border">
-                  <Link href="/" onClick={() => setMobileMenuOpen(false)} className="flex items-baseline">
-                    <span className="text-xl font-bold text-foreground">{t("navbar.brand.primary")}</span>
-                    <span className="text-xl font-bold text-primary ml-2">{t("navbar.brand.secondary")}</span>
+                  <Link
+                    href="/"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-3"
+                    aria-label={`${t("navbar.brand.primary")} ${t("navbar.brand.secondary")}`}
+                  >
+                    <Image
+                      src="/images/navbar-logo-black-color.png"
+                      alt="Smart Path Consultancy"
+                      width={200}
+                      height={70}
+                      className="h-14 w-auto dark:invert"
+                    />
+                    <div className="flex items-baseline">
+                      <span className="text-xl font-bold text-foreground">
+                        {t("navbar.brand.primary")}
+                      </span>
+                      <span className="text-xl font-bold text-primary ml-2">
+                        {t("navbar.brand.secondary")}
+                      </span>
+                    </div>
                   </Link>
                   <Button
                     variant="ghost"

@@ -32,10 +32,11 @@ export function Services() {
             <span className="text-sm font-semibold tracking-wider uppercase text-primary">Services</span>
           </div>
           <h2 className="font-heading text-4xl font-bold sm:text-5xl lg:text-6xl mb-6">
-            Administrative & Economic Consultancy
+            Financial Consultancy Services
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Specialized consultancy services in administrative studies and economic feasibility analysis for informed business decisions
+            Accounting, tax, VAT, transfer pricing, internal audit, business and risk advisory, strategy & transformation,
+            M&A support, technology advisory, and financial management—tailored to your needs.
           </p>
         </div>
 

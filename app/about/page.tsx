@@ -167,12 +167,26 @@ export default function AboutPage() {
             >
               <p className="text-center text-sm uppercase tracking-[0.2em] text-accent mb-4">About us</p>
               <h1 className="text-center text-3xl md:text-5xl font-bold mb-6">
-                Clarity. Innovation. Reliability.
+                Trusted Advisors, Timely solutions
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground text-center leading-relaxed">
-                Headquartered in the UAE, Smart Path Consultancy helps entrepreneurs, startups, and enterprises
-                navigate regulations, enter markets, and scale with confidence. With deep regional insight and a
-                results-driven approach, we turn business goals into reality—at every stage of the journey.
+                At Smart Path Consultancy, we are dedicated to delivering high‑quality financial consultancy services
+                that meet the unique needs of our clients. Our team of experienced professionals has a deep
+                understanding of the financial landscape and is committed to providing expert guidance and support.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Mission */}
+        <section className="py-16 md:py-20 bg-card border-b border-border/60">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <div className="text-center">
+              <p className="text-sm uppercase tracking-[0.2em] text-accent mb-2">Mission</p>
+              <h3 className="text-2xl md:text-4xl font-bold mb-4">Our Mission</h3>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Our mission is to empower businesses and individuals to achieve financial excellence through expert
+                guidance, innovative solutions, and exceptional service.
               </p>
             </div>
           </div>
