@@ -92,7 +92,7 @@ export function Contact() {
           </div>
           <h2 className="font-heading text-3xl font-bold sm:text-4xl lg:text-5xl mb-6">Get Started Today</h2>
           <p className="mt-4 text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Ready to accelerate your business growth? Let's discuss how we can help you succeed in the UAE market.
+            Ready to accelerate your business growth? Let&apos;s discuss how we can help you succeed in the UAE market.
           </p>
         </div>
 
@@ -101,7 +101,7 @@ export function Contact() {
             <div className="mb-8">
               <h3 className="font-heading text-2xl font-bold mb-2">Send us a message</h3>
               <p className="text-sm text-muted-foreground">
-                Fill out the form below and we'll get back to you within 24 hours. Your information is kept strictly confidential.
+                Fill out the form below and we&apos;ll get back to you within 24 hours. Your information is kept strictly confidential.
               </p>
             </div>
             

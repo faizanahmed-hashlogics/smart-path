@@ -66,7 +66,7 @@ export function VideoSection() {
           <div className="mb-12 space-y-8">
             <h2 className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold mb-8 animate-fade-in-up delay-100 drop-shadow-lg">
               Connecting the dots. <br/>
-              <span className="text-primary">It's what we do.</span>
+              <span className="text-primary">It&apos;s what we do.</span>
             </h2>
             
             <p className="text-xl md:text-2xl leading-relaxed opacity-90 animate-fade-in-up delay-200 max-w-3xl mx-auto font-light">
@@ -78,7 +78,7 @@ export function VideoSection() {
               <div>
                 <h3 className="text-xl font-bold mb-3 text-primary">Data-Driven Insights</h3>
                 <p className="text-white/80 leading-relaxed">
-                  Our proven methodologies help businesses navigate complex challenges while maximizing opportunities in today's dynamic market.
+                  Our proven methodologies help businesses navigate complex challenges while maximizing opportunities in today&apos;s dynamic market.
                 </p>
               </div>
               <div>
