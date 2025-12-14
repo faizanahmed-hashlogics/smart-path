@@ -1,62 +1,42 @@
 "use client"
 
-import { Section } from "@/components/ui/section"
 import { Container } from "@/components/ui/container"
+import { Section } from "@/components/ui/section"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, CheckCircle2 } from "lucide-react"
+import { ArrowRight, Briefcase } from "lucide-react"
+import { useTranslation } from "react-i18next"
 
 export function CareersSection() {
+  const { t } = useTranslation()
+
   return (
-    <Section id="careers-section" className="py-24 bg-background">
+    <Section id="careers" className="bg-muted/30 relative overflow-hidden">
       <Container>
-        <div className="grid lg:grid-cols-2 gap-10 items-center">
-          {/* Visual */}
-          <div className="order-1 lg:order-2">
-            <div className="relative overflow-hidden rounded-2xl border border-border/60 bg-card/50 shadow-sm">
-              <img
-                src="/images/dubai-skyline.webp"
-                alt="Careers at Smart Path"
-                className="w-full h-full object-cover aspect-[4/3]"
-              />
-            </div>
+        <div className="relative z-10 bg-card border border-border/50 rounded-3xl p-8 md:p-12 lg:p-16 text-center overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent" />
+          <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/10 rounded-full blur-3xl" />
+          <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-accent/10 rounded-full blur-3xl" />
+          
+          <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-8">
+            <Briefcase className="h-8 w-8 text-primary" />
           </div>
 
-          {/* Copy */}
-          <div className="order-2 lg:order-1">
-            <span className="inline-block text-[11px] font-semibold tracking-wider uppercase text-accent mb-2">
-              Careers
-            </span>
-            <h3 className="text-3xl md:text-5xl font-bold text-foreground mb-4">Build your impact in the UAE</h3>
-            <p className="text-base md:text-lg text-muted-foreground mb-6">
-              Join a consultancy focused on real outcomes for clients across the Middle East. Grow with mentorship,
-              diverse teams, and work that matters.
-            </p>
+          <h2 className="font-heading text-3xl font-bold sm:text-4xl lg:text-5xl mb-6">
+            {t("careers.title")}
+          </h2>
+          
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
+            {t("careers.subtitle")}
+          </p>
 
-            <ul className="space-y-3 mb-8">
-              <li className="flex items-start gap-3">
-                <CheckCircle2 className="h-5 w-5 text-accent mt-0.5" />
-                <span className="text-sm text-foreground">Client-first work with measurable results</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <CheckCircle2 className="h-5 w-5 text-accent mt-0.5" />
-                <span className="text-sm text-foreground">Structured learning and mentorship</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <CheckCircle2 className="h-5 w-5 text-accent mt-0.5" />
-                <span className="text-sm text-foreground">Inclusive, multicultural team culture</span>
-              </li>
-            </ul>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed">
+            {t("careers.description")}
+          </p>
 
-            <div className="flex items-center gap-6">
-              <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-3 rounded-full">
-                Explore careers
-              </Button>
-              <a href="#" className="inline-flex items-center gap-2 text-accent hover:text-accent/80 font-medium">
-                See awards & recognition
-                <ArrowRight className="w-4 h-4" />
-              </a>
-            </div>
-          </div>
+          <Button size="lg" className="h-12 px-8 rounded-full text-base">
+            {t("careers.cta")}
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
         </div>
       </Container>
     </Section>

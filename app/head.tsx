@@ -9,26 +9,26 @@ export default function Head() {
             "@graph": [
               {
                 "@type": "Organization",
-                "@id": "https://smartpath.ae/#organization",
+                "@id": "https://smartpath-consultancy.com/#organization",
                 name: "Smart Path Consultancy",
-                url: "https://smartpath.ae",
+                url: "https://smartpath-consultancy.com",
                 logo: {
                   "@type": "ImageObject",
-                  url: "https://smartpath.ae/logo.png",
+                  url: "https://smartpath-consultancy.com/logo.png",
                 },
                 sameAs: ["https://linkedin.com/company/smartpath-consultancy"],
               },
               {
                 "@type": "WebSite",
-                "@id": "https://smartpath.ae/#website",
-                url: "https://smartpath.ae",
+                "@id": "https://smartpath-consultancy.com/#website",
+                url: "https://smartpath-consultancy.com",
                 name: "Smart Path Consultancy",
                 publisher: {
-                  "@id": "https://smartpath.ae/#organization",
+                  "@id": "https://smartpath-consultancy.com/#organization",
                 },
                 potentialAction: {
                   "@type": "SearchAction",
-                  target: "https://smartpath.ae/?s={search_term_string}",
+                  target: "https://smartpath-consultancy.com/?s={search_term_string}",
                   "query-input": "required name=search_term_string",
                 },
               },

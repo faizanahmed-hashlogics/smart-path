@@ -1,34 +1,30 @@
 import { Navbar } from "@/components/navbar"
 import { Hero } from "@/components/hero"
-import { VideoSection } from "@/components/video-section"
-import { InsightsSection } from "@/components/insights-section"
-import { OurWorkSection } from "@/components/our-work-section"
-import { CareersSection } from "@/components/careers-section"
-import { TrustRow } from "@/components/trust-row"
 import { About } from "@/components/about"
-import { Process } from "@/components/process"
-import { Stats } from "@/components/stats"
-import { Testimonials } from "@/components/testimonials"
+import { Services } from "@/components/services"
+import { WhyChooseUs } from "@/components/why-choose-us"
+import { Industries } from "@/components/industries"
+import { VideoSection } from "@/components/video-section"
+import { Pricing } from "@/components/pricing"
 import { FAQs } from "@/components/faqs"
 import { Contact } from "@/components/contact"
+import { CareersSection } from "@/components/careers-section"
 import { Footer } from "@/components/footer"
 
-export default function HomePage() {
+export default function Home() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       <Navbar />
-      <main>
+      <main className="flex-grow">
         <Hero />
-        <VideoSection />
-        <TrustRow />
-        <InsightsSection />
-        <OurWorkSection />
-        <CareersSection />
         <About />
-        <Process />
-        <Stats />
-        <Testimonials />
+        <Services />
+        <WhyChooseUs />
+        <Industries />
+        <VideoSection />
+        <Pricing />
         <FAQs />
+        <CareersSection />
         <Contact />
       </main>
       <Footer />

@@ -1,31 +1,39 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+"use client"
+
 import { Container } from "@/components/ui/container"
 import { Section } from "@/components/ui/section"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { FAQS } from "@/lib/constants"
+import { useTranslation } from "react-i18next"
 
 export function FAQs() {
+  const { t } = useTranslation()
+
   return (
-    <Section id="faqs">
+    <Section id="faqs" className="bg-muted/30">
       <Container>
         <div className="text-center mb-16">
-          <h2 className="font-heading text-3xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
-          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-            Get answers to common questions about our services
+          <h2 className="font-heading text-3xl font-bold sm:text-4xl mb-6">
+            {t("faq.title")}
+          </h2>
+          <p className="text-xl text-muted-foreground">
+            {t("faq.subtitle")}
           </p>
         </div>
 
         <div className="max-w-3xl mx-auto">
-          <Accordion type="single" collapsible className="space-y-4">
+          <Accordion type="single" collapsible className="w-full">
             {FAQS.map((faq, index) => (
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="border border-border rounded-lg px-6 neon-border hover:border-primary/50 transition-colors"
               >
-                <AccordionTrigger className="text-left font-semibold hover:text-primary">
+                <AccordionTrigger className="text-left text-lg font-medium">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed">{faq.answer}</AccordionContent>
+                <AccordionContent className="text-muted-foreground text-base leading-relaxed">
+                  {faq.answer}
+                </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>

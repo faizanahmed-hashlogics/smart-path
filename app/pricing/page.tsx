@@ -1,15 +1,13 @@
-"use client"
-
+import { Pricing } from "@/components/pricing"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
-import { About } from "@/components/about"
 
-export default function AboutPage() {
+export default function PricingPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-grow pt-20">
-        <About detailed={true} />
+        <Pricing />
       </main>
       <Footer />
     </div>

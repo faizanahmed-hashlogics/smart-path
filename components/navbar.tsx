@@ -10,15 +10,17 @@ import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { useTranslation } from "react-i18next"
 import { LanguageSwitcher } from "@/components/i18n/language-switcher"
+import { cn } from "@/lib/utils"
+import { SERVICES, PRICING_PACKAGES } from "@/lib/constants"
+import { Shield, Target, Users, Award } from "lucide-react"
 
 const navigation = [
   { key: "home", href: "/", sectionId: "home" },
-  { key: "process", href: "/process", sectionId: "process" },
-  { key: "testimonials", href: "/testimonials", sectionId: "testimonials" },
+  { key: "about", href: "/about" },
+  { key: "services", href: "/services" },
+  { key: "pricing", href: "/pricing" },
   { key: "faqs", href: "/faqs", sectionId: "faqs" },
   { key: "contact", href: "/contact", sectionId: "contact" },
-  { key: "services", href: "/services" },
-  { key: "about", href: "/about" },
 ]
 
 const socialLinks = [
@@ -85,7 +87,7 @@ export function Navbar() {
   }, [pathname])
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 2)
+    const onScroll = () => setScrolled(window.scrollY > 20)
     onScroll()
     window.addEventListener("scroll", onScroll, { passive: true })
     return () => window.removeEventListener("scroll", onScroll)
@@ -97,8 +99,6 @@ export function Navbar() {
 
     const map: { id: string; href: string }[] = [
       { id: "home", href: "/" },
-      { id: "process", href: "/process" },
-      { id: "testimonials", href: "/testimonials" },
       { id: "faqs", href: "/faqs" },
       { id: "contact", href: "/contact" },
     ]
@@ -131,18 +131,6 @@ export function Navbar() {
     return () => observer.disconnect()
   }, [pathname])
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-      try {
-        window.history.pushState(null, "", href)
-        setCurrentHash(href)
-      } catch {}
-      setMobileMenuOpen(false)
-    }
-  }
-
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark")
   }
@@ -156,56 +144,24 @@ export function Navbar() {
 
   return (
     <>
-      <header className="relative bg-background">
+      <header className="relative bg-background/50 backdrop-blur-sm border-b border-border/40 z-40">
         <div>
           <Container>
-            <div className="flex items-center justify-between py-3">
-              <Link
-                href="/"
-                className="flex items-center gap-3"
-                aria-label={`${t("navbar.brand.primary")} ${t("navbar.brand.secondary")}`}
-              >
-                <Image
-                  src="/images/navbar-logo-black-color.png"
-                  alt="Smart Path Consultancy"
-                  width={160}
-                  height={40}
-                  className="h-10 sm:h-12 w-auto dark:invert"
-                  priority
-                />
-                <div className="flex items-baseline">
-                  <span className="text-lg sm:text-2xl leading-tight font-bold text-foreground">
-                    {t("navbar.brand.primary")}
-                  </span>
-                  <span className="text-lg sm:text-2xl leading-tight font-bold text-primary ml-2">
-                    {t("navbar.brand.secondary")}
-                  </span>
-                </div>
-              </Link>
-
-              <div className="hidden xl:flex items-center space-x-8">
-                <div className="flex items-center space-x-2 text-muted-foreground">
-                  <MapPin className="h-4 w-4 text-primary" />
-                  <div className="text-sm">
-                    <div className="font-medium">{t("navbar.location.line1")}</div>
-                    <div>{t("navbar.location.line2")}</div>
-                  </div>
+            <div className="flex items-center justify-between py-2">
+              <div className="hidden xl:flex items-center space-x-6 text-xs font-medium text-muted-foreground w-full justify-end">
+                <div className="flex items-center space-x-2 px-3 py-1 rounded-full bg-secondary/50 hover:bg-secondary transition-colors">
+                  <MapPin className="h-3.5 w-3.5 text-primary" />
+                  <span>{t("navbar.location.line1")}</span>
                 </div>
 
-                <div className="flex items-center space-x-2 text-muted-foreground">
-                  <Clock className="h-4 w-4 text-primary" />
-                  <div className="text-sm">
-                    <div className="font-medium">{t("navbar.hours.line1")}</div>
-                    <div>{t("navbar.hours.line2")}</div>
-                  </div>
+                <div className="flex items-center space-x-2 px-3 py-1 rounded-full bg-secondary/50 hover:bg-secondary transition-colors">
+                  <Clock className="h-3.5 w-3.5 text-primary" />
+                  <span>{t("navbar.hours.line1")}</span>
                 </div>
 
-                <div className="flex items-center space-x-2 text-muted-foreground">
-                  <Phone className="h-4 w-4 text-primary" />
-                  <div className="text-sm">
-                    <div className="font-medium">{t("navbar.phone.number")}</div>
-                    <div>{t("navbar.phone.line2")}</div>
-                  </div>
+                <div className="flex items-center space-x-2 px-3 py-1 rounded-full bg-secondary/50 hover:bg-secondary transition-colors">
+                  <Phone className="h-3.5 w-3.5 text-primary" />
+                  <span>{t("navbar.phone.number")}</span>
                 </div>
               </div>
             </div>
@@ -214,60 +170,219 @@ export function Navbar() {
       </header>
 
       <div
-        className={`sticky top-0 z-50 border-b border-border bg-background transition-shadow ${
-          scrolled ? "shadow-sm" : "shadow-none"
-        }`}
+        className={cn(
+          "sticky top-4 z-50 transition-all duration-500 ease-in-out px-4",
+          scrolled ? "translate-y-0" : "translate-y-0"
+        )}
       >
-        <Container>
-          <nav className="relative flex items-center justify-center py-3 min-h-14">
-            <div className="flex lg:hidden absolute right-0 top-1/2 -translate-y-1/2">
+        <div className={cn(
+          "mx-auto max-w-7xl rounded-full transition-all duration-500 border",
+          scrolled 
+            ? "bg-white/80 dark:bg-black/80 backdrop-blur-xl border-white/20 shadow-lg shadow-black/5 py-2 px-6" 
+            : "bg-transparent border-transparent py-4 px-0"
+        )}>
+          <nav className="relative flex items-center justify-between">
+            {/* Logo */}
+            <Link
+              href="/"
+              className="flex items-center gap-3 group shrink-0"
+              aria-label={`${t("navbar.brand.primary")} ${t("navbar.brand.secondary")}`}
+            >
+              <div className="relative">
+                <div className="absolute -inset-2 bg-primary/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <Image
+                  src="/images/navbar-logo-black-color.png"
+                  alt="Smart Path Consultancy"
+                  width={160}
+                  height={40}
+                  className="relative h-9 sm:h-11 w-auto dark:invert transition-transform duration-300 group-hover:scale-105"
+                  priority
+                />
+              </div>
+              <div className="flex items-baseline hidden sm:flex">
+                <span className="text-lg sm:text-xl leading-tight font-bold text-foreground">
+                  {t("navbar.brand.primary")}
+                </span>
+                <span className="text-lg sm:text-xl leading-tight font-bold text-primary ml-1.5">
+                  {t("navbar.brand.secondary")}
+                </span>
+              </div>
+            </Link>
+
+            {/* Mobile Menu Toggle */}
+            <div className="flex lg:hidden">
               <Button
                 variant="ghost"
-                size="sm"
+                size="icon"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-label="Toggle menu"
-                className="text-foreground hover:bg-muted"
+                className="text-foreground hover:bg-muted rounded-full"
               >
                 {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </Button>
             </div>
 
-            <div className="hidden lg:flex lg:gap-x-8">
+            {/* Desktop Navigation */}
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center gap-8">
               {navigation.map((item) => {
                 const label = t(`navbar.nav.${item.key}`)
+                const active = isActive(item.href)
+                const hasDropdown = ["services", "about", "pricing"].includes(item.key)
+                
+                if (hasDropdown) {
+                  return (
+                    <div key={item.key} className="relative group">
+                      <Link
+                        href={item.href}
+                        className={cn(
+                          "flex items-center gap-1 text-sm font-medium tracking-wide transition-colors duration-200 py-4",
+                          active ? "text-primary font-semibold" : "text-muted-foreground hover:text-primary"
+                        )}
+                      >
+                        <span>{label}</span>
+                        <ChevronRight className="h-4 w-4 rotate-90 transition-transform duration-300 group-hover:-rotate-90" />
+                        {active && (
+                          <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary rounded-full animate-fade-in" />
+                        )}
+                      </Link>
+
+                      {/* Mega Menu Dropdown */}
+                      <div className={cn(
+                        "absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 z-50",
+                        item.key === "services" ? "w-[800px]" : "w-[600px]"
+                      )}>
+                        <div className="bg-card/95 backdrop-blur-xl border border-border/50 rounded-2xl shadow-2xl p-6">
+                          
+                          {/* Services Dropdown */}
+                          {item.key === "services" && (
+                            <>
+                              <div className="grid grid-cols-2 gap-x-8 gap-y-6">
+                                {SERVICES.map((service) => (
+                                  <Link 
+                                    key={service.id} 
+                                    href={`/services?tab=${service.id}`}
+                                    className="flex items-start gap-4 p-3 rounded-xl hover:bg-muted/50 transition-colors group/item"
+                                  >
+                                    <div className="mt-1 p-2 rounded-lg bg-primary/10 text-primary group-hover/item:bg-primary group-hover/item:text-primary-foreground transition-colors">
+                                      <service.icon className="h-5 w-5" />
+                                    </div>
+                                    <div>
+                                      <h4 className="font-semibold text-sm mb-1 group-hover/item:text-primary transition-colors">{service.title}</h4>
+                                      <p className="text-xs text-muted-foreground line-clamp-2">{service.description}</p>
+                                    </div>
+                                  </Link>
+                                ))}
+                              </div>
+                              <div className="mt-6 pt-4 border-t border-border/50 flex justify-between items-center">
+                                <div className="text-xs text-muted-foreground">
+                                  Need a custom solution?
+                                </div>
+                                <Link href="/contact" className="text-xs font-semibold text-primary hover:underline">
+                                  Talk to an expert &rarr;
+                                </Link>
+                              </div>
+                            </>
+                          )}
+
+                          {/* About Dropdown */}
+                          {item.key === "about" && (
+                            <div className="grid grid-cols-2 gap-6">
+                              <div className="space-y-4">
+                                <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">Company</h4>
+                                <Link href="/about" className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors group/item">
+                                  <div className="p-2 rounded-md bg-primary/10 text-primary group-hover/item:bg-primary group-hover/item:text-primary-foreground transition-colors">
+                                    <Shield className="h-4 w-4" />
+                                  </div>
+                                  <span className="font-medium">Who We Are</span>
+                                </Link>
+                                <Link href="/about" className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors group/item">
+                                  <div className="p-2 rounded-md bg-primary/10 text-primary group-hover/item:bg-primary group-hover/item:text-primary-foreground transition-colors">
+                                    <Target className="h-4 w-4" />
+                                  </div>
+                                  <span className="font-medium">Mission & Vision</span>
+                                </Link>
+                              </div>
+                              <div className="space-y-4">
+                                <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">Team & Approach</h4>
+                                <Link href="/about" className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors group/item">
+                                  <div className="p-2 rounded-md bg-primary/10 text-primary group-hover/item:bg-primary group-hover/item:text-primary-foreground transition-colors">
+                                    <Users className="h-4 w-4" />
+                                  </div>
+                                  <span className="font-medium">Our Team</span>
+                                </Link>
+                                <Link href="/about" className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors group/item">
+                                  <div className="p-2 rounded-md bg-primary/10 text-primary group-hover/item:bg-primary group-hover/item:text-primary-foreground transition-colors">
+                                    <Award className="h-4 w-4" />
+                                  </div>
+                                  <span className="font-medium">Our Approach</span>
+                                </Link>
+                              </div>
+                            </div>
+                          )}
+
+                          {/* Pricing Dropdown */}
+                          {item.key === "pricing" && (
+                            <div className="grid grid-cols-3 gap-4">
+                              {PRICING_PACKAGES.map((pkg) => (
+                                <Link 
+                                  key={pkg.name} 
+                                  href="/pricing"
+                                  className="block p-4 rounded-xl border border-border/50 hover:border-primary/50 hover:bg-muted/30 transition-all group/item"
+                                >
+                                  <h4 className="font-bold text-sm mb-1 group-hover/item:text-primary transition-colors">{pkg.name}</h4>
+                                  <div className="text-lg font-bold text-primary mb-2">{pkg.price}<span className="text-xs font-normal text-muted-foreground">{pkg.period}</span></div>
+                                  <p className="text-xs text-muted-foreground line-clamp-2">{pkg.description}</p>
+                                </Link>
+                              ))}
+                            </div>
+                          )}
+
+                        </div>
+                      </div>
+                    </div>
+                  )
+                }
+
                 return (
                   <Link
                     key={item.key}
                     href={item.href}
-                    className={`inline-flex items-center h-10 px-3 rounded-sm text-sm font-medium tracking-wide transition-colors cursor-pointer ${
-                      isActive(item.href)
-                        ? "bg-primary/10 text-primary"
-                        : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                    }`}
-                    aria-current={isActive(item.href) ? "page" : undefined}
+                    className={cn(
+                      "relative text-sm font-medium tracking-wide transition-colors duration-200",
+                      active
+                        ? "text-primary font-semibold"
+                        : "text-muted-foreground hover:text-primary"
+                    )}
+                    aria-current={active ? "page" : undefined}
                   >
                     <span>{label}</span>
+                    {active && (
+                      <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary rounded-full animate-fade-in" />
+                    )}
                   </Link>
                 )
               })}
             </div>
 
-            <div className="hidden lg:flex items-center space-x-3 absolute right-0 top-1/2 -translate-y-1/2">
+            {/* Right Actions */}
+            <div className="hidden lg:flex items-center space-x-2">
               <LanguageSwitcher />
               <Button
                 variant="ghost"
-                size="sm"
+                size="icon"
                 onClick={toggleTheme}
-                className="text-foreground hover:text-primary hover:bg-muted"
+                className="text-foreground hover:text-primary hover:bg-muted rounded-full w-9 h-9"
                 aria-label="Toggle theme"
               >
                 {mounted ? (theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />) : <span className="inline-block h-4 w-4" />}
               </Button>
+              <div className="h-4 w-px bg-border mx-2" />
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
-                  className="text-foreground hover:text-primary transition-colors"
+                  className="text-muted-foreground hover:text-primary transition-colors p-2 hover:bg-muted rounded-full hover:scale-110 transform duration-200"
                   aria-label={social.label}
                 >
                   <social.icon className="h-4 w-4" />
@@ -275,135 +390,92 @@ export function Navbar() {
               ))}
             </div>
           </nav>
+        </div>
 
-          {mobileMenuOpen && (
-            <>
-              {/* Backdrop */}
-              <div
-                className="fixed inset-0 z-40 bg-background/60 backdrop-blur-sm"
-                onClick={() => setMobileMenuOpen(false)}
-              />
-              {/* Off-canvas panel */}
-              <div className="fixed right-0 top-0 bottom-0 z-50 w-80 max-w-[90vw] bg-card border-l border-border shadow-xl transform transition-transform duration-300 translate-x-0 overflow-y-auto overscroll-contain">
-                <div className="flex items-center justify-between px-4 py-4 border-b border-border">
-                  <Link
-                    href="/"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center gap-3"
-                    aria-label={`${t("navbar.brand.primary")} ${t("navbar.brand.secondary")}`}
-                  >
-                    <Image
-                      src="/images/navbar-logo-black-color.png"
-                      alt="Smart Path Consultancy"
-                      width={200}
-                      height={70}
-                      className="h-14 w-auto dark:invert"
-                    />
-                    <div className="flex items-baseline">
-                      <span className="text-xl font-bold text-foreground">
-                        {t("navbar.brand.primary")}
-                      </span>
-                      <span className="text-xl font-bold text-primary ml-2">
-                        {t("navbar.brand.secondary")}
-                      </span>
-                    </div>
-                  </Link>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => setMobileMenuOpen(false)}
-                    aria-label="Close menu"
-                    className="hover:bg-muted"
-                  >
-                    <X className="h-6 w-6" />
-                  </Button>
-                </div>
+        {/* Mobile Menu Overlay */}
+        {mobileMenuOpen && (
+          <>
+            <div
+              className="fixed inset-0 z-40 bg-background/80 backdrop-blur-md animate-in fade-in duration-200"
+              onClick={() => setMobileMenuOpen(false)}
+            />
+            <div className="fixed right-4 top-4 bottom-4 z-50 w-full max-w-sm bg-card/95 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl transform transition-transform duration-300 translate-x-0 overflow-y-auto overscroll-contain animate-in slide-in-from-right-10 duration-300 flex flex-col">
+              <div className="flex items-center justify-between px-6 py-5 border-b border-border/50">
+                <span className="text-lg font-bold text-foreground">Menu</span>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setMobileMenuOpen(false)}
+                  aria-label="Close menu"
+                  className="hover:bg-muted rounded-full"
+                >
+                  <X className="h-5 w-5" />
+                </Button>
+              </div>
 
-                <nav className="px-2 py-4 space-y-1">
-                  {navigation.map((item) => {
-                    const label = t(`navbar.nav.${item.key}`)
-                    const commonClasses = `flex items-center justify-between w-full text-left px-3 py-3 rounded-md text-base font-medium transition-colors cursor-pointer ${
-                      isActive(item.href)
-                        ? "text-primary bg-primary/10"
-                        : "text-foreground hover:text-primary hover:bg-muted"
-                    }`
-                    return (
-                      <Link key={item.key} href={item.href} onClick={() => setMobileMenuOpen(false)} className={commonClasses}>
-                        <span>{label}</span>
-                        <ChevronRight className="h-4 w-4 opacity-70" />
-                      </Link>
-                    )
-                  })}
-                </nav>
-
-                <div className="px-4 py-3 border-t border-border space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span className="text-base font-medium text-foreground">{t("navbar.theme")}</span>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={toggleTheme}
-                      className="text-foreground hover:text-primary hover:bg-muted"
-                      aria-label="Toggle theme"
+              <nav className="px-3 py-6 space-y-1 flex-1">
+                {navigation.map((item) => {
+                  const label = t(`navbar.nav.${item.key}`)
+                  const active = isActive(item.href)
+                  return (
+                    <Link 
+                      key={item.key} 
+                      href={item.href} 
+                      onClick={() => setMobileMenuOpen(false)} 
+                      className={cn(
+                        "flex items-center justify-between w-full text-left px-4 py-3 rounded-2xl text-lg font-medium transition-all duration-200 cursor-pointer group",
+                        active
+                          ? "text-primary bg-primary/10"
+                          : "text-foreground hover:text-primary hover:bg-muted"
+                      )}
                     >
-                      {mounted ? (theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />) : <span className="inline-block h-5 w-5" />}
+                      <span>{label}</span>
+                      <ChevronRight className={cn(
+                        "h-5 w-5 transition-transform duration-300",
+                        active ? "text-primary translate-x-0" : "opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0"
+                      )} />
+                    </Link>
+                  )
+                })}
+              </nav>
+
+              <div className="px-6 py-6 border-t border-border/50 bg-secondary/30 mt-auto rounded-b-3xl">
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center gap-4">
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      onClick={toggleTheme}
+                      className="rounded-full border-border/50 bg-background/50"
+                    >
+                      {mounted ? (theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />) : <span className="inline-block h-4 w-4" />}
                     </Button>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-base font-medium text-foreground">{t("navbar.language")}</span>
                     <LanguageSwitcher />
                   </div>
-                </div>
-                {/* Compact contact info on mobile */}
-                <div className="px-4 py-3 border-t border-border space-y-2">
-                  <div className="flex items-start gap-2 text-sm text-muted-foreground">
-                    <MapPin className="h-4 w-4 text-primary mt-0.5" />
-                    <div>
-                      <div className="font-medium text-foreground">{t("navbar.location.line1")}</div>
-                      <div>{t("navbar.location.line2")}</div>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-2 text-sm text-muted-foreground">
-                    <Clock className="h-4 w-4 text-primary mt-0.5" />
-                    <div>
-                      <div className="font-medium text-foreground">{t("navbar.hours.line1")}</div>
-                      <div>{t("navbar.hours.line2")}</div>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-2 text-sm text-muted-foreground">
-                    <Phone className="h-4 w-4 text-primary mt-0.5" />
-                    <div>
-                      <div className="font-medium text-foreground">{t("navbar.phone.number")}</div>
-                      <div>{t("navbar.phone.line2")}</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="px-4 py-4 border-t border-border">
-                  <Link
-                    href="/#contact"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="w-full inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground px-4 py-2 text-sm font-medium hover:opacity-90 transition"
-                  >
-                    {t("navbar.contact_cta")}
-                  </Link>
-                  <div className="flex items-center space-x-4 mt-4">
+                  <div className="flex gap-2">
                     {socialLinks.map((social) => (
                       <a
                         key={social.label}
                         href={social.href}
-                        className="text-foreground hover:text-primary transition-colors"
-                        aria-label={social.label}
+                        className="p-2 rounded-full bg-background/50 border border-border/50 text-foreground hover:text-primary transition-colors"
                       >
-                        <social.icon className="h-5 w-5" />
+                        <social.icon className="h-4 w-4" />
                       </a>
                     ))}
                   </div>
                 </div>
+                
+                <Link
+                  href="/#contact"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="w-full inline-flex items-center justify-center rounded-xl bg-primary text-primary-foreground px-4 py-4 text-base font-bold shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:scale-[1.02] transition-all active:scale-[0.98]"
+                >
+                  {t("navbar.contact_cta")}
+                </Link>
               </div>
-            </>
-          )}
-        </Container>
+            </div>
+          </>
+        )}
       </div>
     </>
   )

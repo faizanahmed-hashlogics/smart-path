@@ -39,7 +39,7 @@ export function VideoSection() {
       <div className="absolute inset-0 w-full h-full">
         <video
           ref={videoRef}
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover scale-105"
           autoPlay
           muted
           loop
@@ -56,39 +56,51 @@ export function VideoSection() {
           <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2015875-hd_1920_1080_30fps-LITudn1Oeb0ZpfWKUu1PJhO1lYRajZ.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        {/* Dark overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/50 z-10" />
+        {/* Gradient overlay for better text readability and depth */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80 z-10" />
+        <div className="absolute inset-0 bg-primary/10 mix-blend-overlay z-10" />
       </div>
 
-      <Container className="relative z-20 py-4 md:py-0">
+      <Container className="relative z-20 py-12 md:py-0">
         <div className="max-w-4xl mx-auto text-center text-white">
-          <div className="mb-12 space-y-6">
-            <h2 className="text-4xl md:text-5xl font-bold mb-8">Connecting the dots. It's what we do.</h2>
-            <p className="text-xl md:text-2xl leading-relaxed opacity-90">
+          <div className="mb-12 space-y-8">
+            <h2 className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold mb-8 animate-fade-in-up delay-100 drop-shadow-lg">
+              Connecting the dots. <br/>
+              <span className="text-primary">It's what we do.</span>
+            </h2>
+            
+            <p className="text-xl md:text-2xl leading-relaxed opacity-90 animate-fade-in-up delay-200 max-w-3xl mx-auto font-light">
               Transform your business vision into measurable results with strategic guidance that drives sustainable
               growth and competitive advantage.
             </p>
-            <p className="text-lg md:text-xl leading-relaxed opacity-80">
-              Our proven methodologies and data-driven insights help businesses navigate complex challenges while
-              maximizing opportunities in today's dynamic market.
-            </p>
-            <p className="text-lg md:text-xl leading-relaxed opacity-80">
-              Partner with industry experts who understand the nuances of scaling operations, optimizing processes, and
-              building resilient business foundations.
-            </p>
+            
+            <div className="grid md:grid-cols-2 gap-8 text-left mt-12 animate-fade-in-up delay-300 bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10">
+              <div>
+                <h3 className="text-xl font-bold mb-3 text-primary">Data-Driven Insights</h3>
+                <p className="text-white/80 leading-relaxed">
+                  Our proven methodologies help businesses navigate complex challenges while maximizing opportunities in today's dynamic market.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-3 text-primary">Industry Expertise</h3>
+                <p className="text-white/80 leading-relaxed">
+                  Partner with experts who understand the nuances of scaling operations, optimizing processes, and building resilient foundations.
+                </p>
+              </div>
+            </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in-up delay-500">
             <Button
               size="lg"
-              className="bg-primary hover:bg-primary/90 text-black font-semibold px-12 py-4 text-lg rounded-full transition-all duration-300 hover:scale-105"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-10 py-6 text-lg rounded-full transition-all duration-300 hover:scale-105 shadow-lg shadow-primary/25"
             >
-              What We Are
+              Who We Are
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="border-2 border-white text-white hover:bg-white hover:text-black px-12 py-4 text-lg rounded-full transition-all duration-300 hover:scale-105 bg-transparent"
+              className="border-2 border-white/20 bg-white/5 backdrop-blur-sm text-white hover:bg-white hover:text-black px-10 py-6 text-lg rounded-full transition-all duration-300 hover:scale-105"
             >
               What We Do
             </Button>

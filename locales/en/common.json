@@ -1,33 +1,128 @@
 {
   "navbar": {
     "brand": { "primary": "Smart Path", "secondary": "Consultancy" },
-    "location": { "line1": "Business Bay, Dubai", "line2": "United Arab Emirates" },
-    "hours": { "line1": "Sun - Thu 9.00 - 18.00", "line2": "Friday & Saturday CLOSED" },
-    "phone": { "number": "+971-4-123-4567", "line2": "Free consultation" },
+    "location": { "line1": "United Arab Emirates", "line2": "" },
+    "hours": { "line1": "Sunday – Friday | 9:00 AM – 6:00 PM", "line2": "" },
+    "phone": { "number": "+971 52332 3494", "line2": "Free consultation" },
     "theme": "Theme",
     "contact_cta": "Contact us",
     "language": "Language",
     "social": { "facebook": "Facebook", "instagram": "Instagram" },
     "nav": {
       "home": "Home",
-      "process": "Process",
-      "testimonials": "Testimonials",
-      "faqs": "FAQs",
-      "contact": "Contact",
+      "about": "About Us",
       "services": "Services",
-      "about": "About"
+      "pricing": "Pricing",
+      "faqs": "FAQ",
+      "contact": "Contact Us",
+      "careers": "Careers"
     }
   },
   "hero": {
-    "title": "Expert Administrative & Economic Consultancy in the UAE",
-    "subtitle": "Your Financial partner, every step of the way",
-    "description": "Specialized in administrative consultancy, economic feasibility studies, and strategic business analysis to drive informed decision-making and sustainable growth.",
+    "title": "Your Smart Path to <br /> <span class=\"text-primary\">Financial Accuracy & Business Growth</span>",
+    "subtitle": "Audit • Accounting • VAT • Advisory • Compliance",
+    "description": "Smart Path Consultancy is a UAE-based professional audit and accounting firm providing reliable financial solutions to businesses of all sizes. We help you stay compliant, improve performance, and make confident business decisions.",
     "cta": {
-      "primary": "Get a Free Consultation",
-      "secondary": "Explore Services"
+      "primary": "Our Services",
+      "secondary": "Contact Us"
     }
-  }
-  ,
+  },
+  "about": {
+    "badge": "Welcome to Smart Path Consultancy",
+    "title": "Clear Financial Information is the <br/> <span class=\"text-primary\">Foundation of Success.</span>",
+    "description1": "At Smart Path Consultancy, we believe that clear financial information is the foundation of every successful business. We provide expert audit, accounting, taxation, and advisory services designed to support your business growth while ensuring full regulatory compliance across the UAE.",
+    "whoWeAre": {
+      "title": "Who We Are",
+      "description": "Smart Path Consultancy is a UAE-based Consultancy, accounting, and advisory firm dedicated to supporting businesses with accurate financial reporting, strong compliance, and strategic insights."
+    },
+    "whatWeDo": {
+      "title": "What We Do",
+      "description": "We provide complete financial solutions including: Internal Audit, Accounting & Bookkeeping, VAT & Tax Compliance, IFRS Reporting, Financial Advisory, Internal Control Systems support, and Business Setup & Startup Support."
+    },
+    "mission": {
+      "title": "Mission",
+      "description": "To simplify financial management for businesses by delivering accurate, compliant, and high-quality accounting and advisory services."
+    },
+    "vision": {
+      "title": "Vision",
+      "description": "To become one of the most trusted audit and accounting firms in the UAE."
+    },
+    "values": {
+      "title": "Values",
+      "items": ["Integrity", "Accuracy", "Confidentiality", "Commitment", "Professional Excellence"]
+    },
+    "approach": {
+      "title": "Our Approach",
+      "subtitle": "How we deliver excellence",
+      "steps": [
+        { "title": "Understand", "description": "We start by deeply understanding your business model, challenges, and goals." },
+        { "title": "Analyze", "description": "Our experts conduct a thorough analysis of your financial data and processes." },
+        { "title": "Strategize", "description": "We develop tailored strategies and solutions to address your specific needs." },
+        { "title": "Execute", "description": "We implement the solutions with precision and provide ongoing support." }
+      ]
+    },
+    "team": {
+      "title": "Our Expertise",
+      "description": "Our team comprises highly qualified professionals with global certifications (CA, ACCA, CPA) and extensive regional experience. We bring a wealth of knowledge to every engagement, ensuring you receive the highest standard of advice and service."
+    },
+    "cta": {
+      "title": "Ready to elevate your business?",
+      "button": "Get in Touch"
+    }
+  },
+  "services": {
+    "title": "Our Core Services",
+    "subtitle": "Comprehensive solutions tailored to your business needs."
+  },
+  "whyChooseUs": {
+    "title": "Why Choose <br/> <span class=\"text-primary\">Smart Path Consultancy</span>",
+    "items": [
+      "Experienced Audit & Accounting Professionals",
+      "Full Compliance with UAE Laws & IFRS",
+      "Timely Reporting & Deadline Assurance",
+      "Affordable & Transparent Pricing",
+      "Personalized Client Support",
+      "Strict Confidentiality & Data Security"
+    ]
+  },
+  "industries": {
+    "title": "Industries We Serve",
+    "items": [
+      "Trading & Retail",
+      "Construction & Contracting",
+      "Manufacturing",
+      "Restaurants & Hospitality",
+      "Logistics & Transport",
+      "Real Estate",
+      "Healthcare",
+      "Technology & Services",
+      "Startups & SMEs"
+    ]
+  },
+  "pricing": {
+    "badge": "Our Packages",
+    "title": "Transparent Pricing",
+    "subtitle": "Choose the plan that fits your business needs."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Answers to common questions about our services."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch with our expert team.",
+    "info": {
+      "location": "United Arab Emirates",
+      "phone": "+971 52332 3494",
+      "email": "info@smartpath-consultancy.com",
+      "hours": "Sunday – Friday | 9:00 AM – 6:00 PM"
+    }
+  },
+  "careers": {
+    "title": "Careers",
+    "subtitle": "Join Smart Path Consultancy and grow your professional career.",
+    "description": "We are always looking for talented individuals to join our team."
+  },
   "languageMenu": {
     "english": "English",
     "arabic": "Arabic"

@@ -72,8 +72,8 @@ export async function POST(req: Request) {
     `
 
     await transporter.sendMail({
-      from: `Smart Path Website <${from}>`,
-      to,
+      from: 'Contact Form <info@smartpath-consultancy.com>',
+      to: 'info@smartpath-consultancy.com',
       subject,
       text,
       html,
