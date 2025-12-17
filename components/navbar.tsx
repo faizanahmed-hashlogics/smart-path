@@ -171,8 +171,7 @@ export function Navbar() {
 
       <div
         className={cn(
-          "sticky top-4 z-50 transition-all duration-500 ease-in-out px-4",
-          scrolled ? "translate-y-0" : "translate-y-0"
+          "sticky top-4 z-50 transition-all duration-500 ease-in-out px-4"
         )}
       >
         <div className={cn(
@@ -396,10 +395,10 @@ export function Navbar() {
         {mobileMenuOpen && (
           <>
             <div
-              className="fixed inset-0 z-40 bg-background/80 backdrop-blur-md animate-in fade-in duration-200"
+              className="fixed inset-0 z-50 bg-background/80 backdrop-blur-md animate-in fade-in duration-200"
               onClick={() => setMobileMenuOpen(false)}
             />
-            <div className="fixed right-4 top-4 bottom-4 z-50 w-full max-w-sm bg-card/95 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl transform transition-transform duration-300 translate-x-0 overflow-y-auto overscroll-contain animate-in slide-in-from-right-10 duration-300 flex flex-col">
+            <div className="fixed right-4 top-4 bottom-4 z-[60] w-full max-w-sm bg-card/95 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl transform transition-transform duration-300 translate-x-0 overflow-y-auto overscroll-contain animate-in slide-in-from-right-10 duration-300 flex flex-col">
               <div className="flex items-center justify-between px-6 py-5 border-b border-border/50">
                 <span className="text-lg font-bold text-foreground">Menu</span>
                 <Button
