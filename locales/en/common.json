@@ -16,6 +16,20 @@
       "faqs": "FAQ",
       "contact": "Contact Us",
       "careers": "Careers"
+    },
+    "mega": {
+      "services": {
+        "needCustom": "Need a custom solution?",
+        "talkToExpert": "Talk to an expert →"
+      },
+      "about": {
+        "company": "Company",
+        "teamApproach": "Team & Approach",
+        "whoWeAre": "Who We Are",
+        "missionVision": "Mission & Vision",
+        "ourTeam": "Our Team",
+        "ourApproach": "Our Approach"
+      }
     }
   },
   "hero": {
@@ -303,6 +317,21 @@
       "hours": "Sunday – Friday | 9:00 AM – 6:00 PM"
     }
   },
+  "contactPage": {
+    "badge": "Get in touch",
+    "title": "Start your consultation",
+    "subtitle": "Tell us about your goals. We’ll respond within 24 hours with next steps for audits, feasibility, or a tailored business case.",
+    "chips": ["24h response", "Confidential", "UAE"],
+    "buttons": {
+      "primary": "Send a message",
+      "secondary": "Call us"
+    },
+    "quickLinks": {
+      "whatsapp": "WhatsApp",
+      "email": "Email",
+      "phone": "Phone"
+    }
+  },
   "contactSection": {
     "badge": "Contact Us",
     "heroTitle": "Get Started Today",
@@ -348,6 +377,25 @@
     "subtitle": "Join Smart Path Consultancy and grow your professional career.",
     "description": "We are always looking for talented individuals to join our team.",
     "cta": "Contact us about careers"
+  },
+  "footer": {
+    "tagline": "Expert Guidance for a secure Tomorrow. We provide top-tier administrative and economic consultancy to help your business thrive.",
+    "quickLinks": "Quick Links",
+    "support": "Support",
+    "contact": "Contact",
+    "links": {
+      "about": "About",
+      "services": "Services",
+      "pricing": "Pricing",
+      "faqs": "FAQs",
+      "contact": "Contact",
+      "privacy": "Privacy"
+    },
+    "legal": {
+      "copyright": "All rights reserved.",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service"
+    }
   },
   "languageMenu": {
     "english": "English",

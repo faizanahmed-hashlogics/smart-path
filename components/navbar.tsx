@@ -263,28 +263,36 @@ export function Navbar() {
                           {item.key === "services" && (
                             <>
                               <div className="grid grid-cols-2 gap-x-8 gap-y-6">
-                                {SERVICES.map((service) => (
-                                  <Link 
-                                    key={service.id} 
-                                    href={`/services?tab=${service.id}`}
-                                    className="flex items-start gap-4 p-3 rounded-xl hover:bg-muted/50 transition-colors group/item"
-                                  >
-                                    <div className="mt-1 p-2 rounded-lg bg-primary/10 text-primary group-hover/item:bg-primary group-hover/item:text-primary-foreground transition-colors">
-                                      <service.icon className="h-5 w-5" />
-                                    </div>
-                                    <div>
-                                      <h4 className="font-semibold text-sm mb-1 group-hover/item:text-primary transition-colors">{service.title}</h4>
-                                      <p className="text-xs text-muted-foreground line-clamp-2">{service.description}</p>
-                                    </div>
-                                  </Link>
-                                ))}
+                                {SERVICES.map((service) => {
+                                  const titleKey = `services.items.${service.id}.title`
+                                  const descriptionKey = `services.items.${service.id}.description`
+                                  return (
+                                    <Link
+                                      key={service.id}
+                                      href={`/services?tab=${service.id}`}
+                                      className="flex items-start gap-4 p-3 rounded-xl hover:bg-muted/50 transition-colors group/item"
+                                    >
+                                      <div className="mt-1 p-2 rounded-lg bg-primary/10 text-primary group-hover/item:bg-primary group-hover/item:text-primary-foreground transition-colors">
+                                        <service.icon className="h-5 w-5" />
+                                      </div>
+                                      <div>
+                                        <h4 className="font-semibold text-sm mb-1 group-hover/item:text-primary transition-colors">
+                                          {t(titleKey)}
+                                        </h4>
+                                        <p className="text-xs text-muted-foreground line-clamp-2">
+                                          {t(descriptionKey)}
+                                        </p>
+                                      </div>
+                                    </Link>
+                                  )
+                                })}
                               </div>
                               <div className="mt-6 pt-4 border-t border-border/50 flex justify-between items-center">
                                 <div className="text-xs text-muted-foreground">
-                                  Need a custom solution?
+                                  {t("navbar.mega.services.needCustom")}
                                 </div>
                                 <Link href="/contact" className="text-xs font-semibold text-primary hover:underline">
-                                  Talk to an expert &rarr;
+                                  {t("navbar.mega.services.talkToExpert")}
                                 </Link>
                               </div>
                             </>
@@ -294,33 +302,49 @@ export function Navbar() {
                           {item.key === "about" && (
                             <div className="grid grid-cols-2 gap-6">
                               <div className="space-y-4">
-                                <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">Company</h4>
-                                <Link href="/about" className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors group/item">
+                                <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">
+                                  {t("navbar.mega.about.company")}
+                                </h4>
+                                <Link
+                                  href="/about"
+                                  className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors group/item"
+                                >
                                   <div className="p-2 rounded-md bg-primary/10 text-primary group-hover/item:bg-primary group-hover/item:text-primary-foreground transition-colors">
                                     <Shield className="h-4 w-4" />
                                   </div>
-                                  <span className="font-medium">Who We Are</span>
+                                  <span className="font-medium">{t("navbar.mega.about.whoWeAre")}</span>
                                 </Link>
-                                <Link href="/about" className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors group/item">
+                                <Link
+                                  href="/about"
+                                  className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors group/item"
+                                >
                                   <div className="p-2 rounded-md bg-primary/10 text-primary group-hover/item:bg-primary group-hover/item:text-primary-foreground transition-colors">
                                     <Target className="h-4 w-4" />
                                   </div>
-                                  <span className="font-medium">Mission & Vision</span>
+                                  <span className="font-medium">{t("navbar.mega.about.missionVision")}</span>
                                 </Link>
                               </div>
                               <div className="space-y-4">
-                                <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">Team & Approach</h4>
-                                <Link href="/about" className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors group/item">
+                                <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">
+                                  {t("navbar.mega.about.teamApproach")}
+                                </h4>
+                                <Link
+                                  href="/about"
+                                  className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors group/item"
+                                >
                                   <div className="p-2 rounded-md bg-primary/10 text-primary group-hover/item:bg-primary group-hover/item:text-primary-foreground transition-colors">
                                     <Users className="h-4 w-4" />
                                   </div>
-                                  <span className="font-medium">Our Team</span>
+                                  <span className="font-medium">{t("navbar.mega.about.ourTeam")}</span>
                                 </Link>
-                                <Link href="/about" className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors group/item">
+                                <Link
+                                  href="/about"
+                                  className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors group/item"
+                                >
                                   <div className="p-2 rounded-md bg-primary/10 text-primary group-hover/item:bg-primary group-hover/item:text-primary-foreground transition-colors">
                                     <Award className="h-4 w-4" />
                                   </div>
-                                  <span className="font-medium">Our Approach</span>
+                                  <span className="font-medium">{t("navbar.mega.about.ourApproach")}</span>
                                 </Link>
                               </div>
                             </div>
@@ -329,17 +353,29 @@ export function Navbar() {
                           {/* Pricing Dropdown */}
                           {item.key === "pricing" && (
                             <div className="grid grid-cols-3 gap-4">
-                              {PRICING_PACKAGES.map((pkg) => (
-                                <Link 
-                                  key={pkg.name} 
-                                  href="/pricing"
-                                  className="block p-4 rounded-xl border border-border/50 hover:border-primary/50 hover:bg-muted/30 transition-all group/item"
-                                >
-                                  <h4 className="font-bold text-sm mb-1 group-hover/item:text-primary transition-colors">{pkg.name}</h4>
-                                  <div className="text-lg font-bold text-primary mb-2">{pkg.price}<span className="text-xs font-normal text-muted-foreground">{pkg.period}</span></div>
-                                  <p className="text-xs text-muted-foreground line-clamp-2">{pkg.description}</p>
-                                </Link>
-                              ))}
+                              {(t("pricing.packages", { returnObjects: true }) as {
+                                name: string
+                                description: string
+                              }[]).map((lp, idx) => {
+                                const pkg = PRICING_PACKAGES[idx]
+                                if (!pkg) return null
+                                return (
+                                  <Link
+                                    key={pkg.name}
+                                    href="/pricing"
+                                    className="block p-4 rounded-xl border border-border/50 hover:border-primary/50 hover:bg-muted/30 transition-all group/item"
+                                  >
+                                    <h4 className="font-bold text-sm mb-1 group-hover/item:text-primary transition-colors">
+                                      {lp.name}
+                                    </h4>
+                                    <div className="text-lg font-bold text-primary mb-2">
+                                      {pkg.price}
+                                      <span className="text-xs font-normal text-muted-foreground">{pkg.period}</span>
+                                    </div>
+                                    <p className="text-xs text-muted-foreground line-clamp-2">{lp.description}</p>
+                                  </Link>
+                                )
+                              })}
                             </div>
                           )}
 
