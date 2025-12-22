@@ -34,6 +34,7 @@ export function Services() {
           <div className="lg:w-1/3 space-y-2">
             {SERVICES.map((service) => {
               const Icon = service.icon
+              const titleKey = `services.items.${service.id}.title`
               return (
                 <button
                   key={service.id}
@@ -51,7 +52,7 @@ export function Services() {
                   )}>
                     <Icon className="h-5 w-5" />
                   </div>
-                  <span className="font-semibold">{service.title}</span>
+                  <span className="font-semibold">{t(titleKey)}</span>
                 </button>
               )
             })}
@@ -59,39 +60,45 @@ export function Services() {
 
           {/* Tab Content */}
           <div className="lg:w-2/3">
-            {SERVICES.map((service) => (
-              <div
-                key={service.id}
-                className={cn(
-                  "bg-card border border-border/50 rounded-3xl p-8 shadow-sm transition-all duration-500",
-                  activeTab === service.id ? "opacity-100 translate-x-0" : "hidden opacity-0 translate-x-4"
-                )}
-              >
-                <div className="mb-8">
-                  <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
-                    <service.icon className="h-8 w-8 text-primary" />
+            {SERVICES.map((service) => {
+              const titleKey = `services.items.${service.id}.title`
+              const descriptionKey = `services.items.${service.id}.description`
+              const pointsKey = `services.items.${service.id}.points`
+              const points = t(pointsKey, { returnObjects: true }) as string[]
+              return (
+                <div
+                  key={service.id}
+                  className={cn(
+                    "bg-card border border-border/50 rounded-3xl p-8 shadow-sm transition-all duration-500",
+                    activeTab === service.id ? "opacity-100 translate-x-0" : "hidden opacity-0 translate-x-4"
+                  )}
+                >
+                  <div className="mb-8">
+                    <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
+                      <service.icon className="h-8 w-8 text-primary" />
+                    </div>
+                    <h3 className="text-2xl font-bold mb-2">{t(titleKey)}</h3>
+                    <p className="text-muted-foreground mb-6">{t(descriptionKey)}</p>
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      {points.map((item, idx) => (
+                        <div key={idx} className="flex items-start gap-3">
+                          <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                          <span className="text-muted-foreground">{item}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-bold mb-2">{service.title}</h3>
-                  <p className="text-muted-foreground mb-6">{service.description}</p>
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    {service.items.map((item, idx) => (
-                      <div key={idx} className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                        <span className="text-muted-foreground">{item}</span>
-                      </div>
-                    ))}
+                  
+                  <div className="pt-8 border-t border-border/50 flex justify-end">
+                    <Link href="/#contact">
+                      <Button className="rounded-full inline-flex items-center gap-2">
+                        {t("services.ctaButton")} <ArrowRight className="h-4 w-4" />
+                      </Button>
+                    </Link>
                   </div>
                 </div>
-                
-                <div className="pt-8 border-t border-border/50 flex justify-end">
-                  <Link href="/#contact">
-                    <Button className="rounded-full inline-flex items-center gap-2">
-                      Get Started <ArrowRight className="h-4 w-4" />
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         </div>
       </Container>

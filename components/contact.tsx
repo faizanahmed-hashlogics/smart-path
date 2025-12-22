@@ -13,8 +13,10 @@ import { Section } from "@/components/ui/section"
 import { MessageSquare, Phone, Mail, MapPin, Send, CheckCircle2, Clock } from "lucide-react"
 import { SITE_CONFIG } from "@/lib/constants"
 import { cn } from "@/lib/utils"
+import { useTranslation } from "react-i18next"
 
 export function Contact() {
+  const { t } = useTranslation()
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -66,12 +68,12 @@ export function Contact() {
             <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-primary/10 flex items-center justify-center animate-pulse-glow">
               <CheckCircle2 className="h-10 w-10 text-primary" />
             </div>
-            <h2 className="font-heading text-3xl font-bold mb-4">Thank You!</h2>
+            <h2 className="font-heading text-3xl font-bold mb-4">{t("contactSection.success.title")}</h2>
             <p className="text-lg text-muted-foreground mb-8">
-              We’d love to hear from you — we’ll reach you soon. Our team will get back to you within 24 hours.
+              {t("contactSection.success.body")}
             </p>
             <Button onClick={() => setIsSubmitted(false)} variant="outline" className="rounded-full">
-              Send Another Message
+              {t("contactSection.success.cta")}
             </Button>
           </div>
         </Container>
@@ -88,27 +90,35 @@ export function Contact() {
       <Container>
         <div className="text-center mb-16">
           <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-sm backdrop-blur-md mb-6">
-            <span className="text-primary font-semibold tracking-wide uppercase text-xs">Contact Us</span>
+            <span className="text-primary font-semibold tracking-wide uppercase text-xs">
+              {t("contactSection.badge")}
+            </span>
           </div>
-          <h2 className="font-heading text-3xl font-bold sm:text-4xl lg:text-5xl mb-6">Get Started Today</h2>
+          <h2 className="font-heading text-3xl font-bold sm:text-4xl lg:text-5xl mb-6">
+            {t("contactSection.heroTitle")}
+          </h2>
           <p className="mt-4 text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Ready to accelerate your business growth? Let&apos;s discuss how we can help you succeed in the UAE market.
+            {t("contactSection.heroSubtitle")}
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
           <div className="glass-card rounded-3xl p-8 lg:p-10 border-t border-white/20 shadow-2xl shadow-primary/5">
             <div className="mb-8">
-              <h3 className="font-heading text-2xl font-bold mb-2">Send us a message</h3>
+              <h3 className="font-heading text-2xl font-bold mb-2">
+                {t("contactSection.formTitle")}
+              </h3>
               <p className="text-sm text-muted-foreground">
-                Fill out the form below and we&apos;ll get back to you within 24 hours. Your information is kept strictly confidential.
+                {t("contactSection.formSubtitle")}
               </p>
             </div>
             
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="name" className="text-sm font-medium">Name *</Label>
+                  <Label htmlFor="name" className="text-sm font-medium">
+                    {t("contactSection.labels.name")}
+                  </Label>
                   <Input
                     id="name"
                     name="name"
@@ -116,11 +126,13 @@ export function Contact() {
                     onChange={handleInputChange}
                     required
                     className="bg-background/50 border-border/50 focus:border-primary/50 focus:ring-primary/20 h-12 rounded-xl"
-                    placeholder="John Doe"
+                    placeholder={t("contactSection.placeholders.name")}
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="email" className="text-sm font-medium">Email *</Label>
+                  <Label htmlFor="email" className="text-sm font-medium">
+                    {t("contactSection.labels.email")}
+                  </Label>
                   <Input
                     id="email"
                     name="email"
@@ -129,39 +141,45 @@ export function Contact() {
                     onChange={handleInputChange}
                     required
                     className="bg-background/50 border-border/50 focus:border-primary/50 focus:ring-primary/20 h-12 rounded-xl"
-                    placeholder="john@company.com"
+                    placeholder={t("contactSection.placeholders.email")}
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="phone" className="text-sm font-medium">Phone (UAE)</Label>
+                  <Label htmlFor="phone" className="text-sm font-medium">
+                    {t("contactSection.labels.phone")}
+                  </Label>
                   <Input
                     id="phone"
                     name="phone"
                     type="tel"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    placeholder="+971-50-1234567"
+                    placeholder={t("contactSection.placeholders.phone")}
                     className="bg-background/50 border-border/50 focus:border-primary/50 focus:ring-primary/20 h-12 rounded-xl"
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="company" className="text-sm font-medium">Company</Label>
+                  <Label htmlFor="company" className="text-sm font-medium">
+                    {t("contactSection.labels.company")}
+                  </Label>
                   <Input
                     id="company"
                     name="company"
                     value={formData.company}
                     onChange={handleInputChange}
                     className="bg-background/50 border-border/50 focus:border-primary/50 focus:ring-primary/20 h-12 rounded-xl"
-                    placeholder="Company Name"
+                    placeholder={t("contactSection.placeholders.company")}
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="message" className="text-sm font-medium">Message *</Label>
+                <Label htmlFor="message" className="text-sm font-medium">
+                  {t("contactSection.labels.message")}
+                </Label>
                 <Textarea
                   id="message"
                   name="message"
@@ -170,7 +188,7 @@ export function Contact() {
                   required
                   rows={4}
                   className="bg-background/50 border-border/50 focus:border-primary/50 focus:ring-primary/20 rounded-xl resize-none"
-                  placeholder="Tell us about your business goals and how we can help..."
+                  placeholder={t("contactSection.placeholders.message")}
                 />
               </div>
 
@@ -185,19 +203,21 @@ export function Contact() {
                 className="w-full h-12 text-base rounded-xl shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300" 
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Sending..." : "Send Message"}
+                {isSubmitting ? t("contactSection.submit.sending") : t("contactSection.submit.idle")}
                 {!isSubmitting && <Send className="ml-2 h-4 w-4" />}
               </Button>
 
               <p className="text-xs text-muted-foreground text-center">
-                By submitting this form, you agree to our privacy policy and consent to being contacted about our services.
+                {t("contactSection.legal")}
               </p>
             </form>
           </div>
 
           <div className="space-y-10 lg:pt-10">
             <div>
-              <h3 className="font-heading text-2xl font-bold mb-6">Quick Actions</h3>
+              <h3 className="font-heading text-2xl font-bold mb-6">
+                {t("contactSection.quickActionsTitle")}
+              </h3>
               <div className="space-y-4">
                 <Button
                   variant="outline"
@@ -208,7 +228,7 @@ export function Contact() {
                     <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mr-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                       <MessageSquare className="h-4 w-4" />
                     </div>
-                    <span className="text-base">WhatsApp Us</span>
+                    <span className="text-base">{t("contactSection.whatsappCta")}</span>
                   </a>
                 </Button>
 
@@ -216,14 +236,16 @@ export function Contact() {
               </div>
 
               <div className="mt-8 space-y-6">
-                 <h3 className="font-heading text-xl font-bold mb-4">Contact Information</h3>
+                 <h3 className="font-heading text-xl font-bold mb-4">
+                  {t("contactSection.contactInfoTitle")}
+                 </h3>
                  
                  <div className="flex items-start space-x-4">
                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
                      <MapPin className="h-5 w-5 text-primary" />
                    </div>
                    <div>
-                     <p className="font-medium">Location</p>
+                     <p className="font-medium">{t("contactSection.infoLabels.location")}</p>
                      <p className="text-muted-foreground">{SITE_CONFIG.contact.location}</p>
                    </div>
                  </div>
@@ -233,7 +255,7 @@ export function Contact() {
                      <Phone className="h-5 w-5 text-primary" />
                    </div>
                    <div>
-                     <p className="font-medium">Phone</p>
+                     <p className="font-medium">{t("contactSection.infoLabels.phone")}</p>
                      <p className="text-muted-foreground" dir="ltr">{SITE_CONFIG.contact.phone}</p>
                    </div>
                  </div>
@@ -243,7 +265,7 @@ export function Contact() {
                      <Mail className="h-5 w-5 text-primary" />
                    </div>
                    <div>
-                     <p className="font-medium">Email</p>
+                     <p className="font-medium">{t("contactSection.infoLabels.email")}</p>
                      <p className="text-muted-foreground">{SITE_CONFIG.contact.email}</p>
                    </div>
                  </div>
@@ -253,8 +275,8 @@ export function Contact() {
                      <Clock className="h-5 w-5 text-primary" />
                    </div>
                    <div>
-                     <p className="font-medium">Working Hours</p>
-                     <p className="text-muted-foreground">Sunday – Friday | 9:00 AM – 6:00 PM</p>
+                     <p className="font-medium">{t("contactSection.infoLabels.hours")}</p>
+                     <p className="text-muted-foreground">{t("contact.info.hours")}</p>
                    </div>
                  </div>
               </div>

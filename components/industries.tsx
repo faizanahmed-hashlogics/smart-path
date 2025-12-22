@@ -34,14 +34,19 @@ export function Industries() {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {INDUSTRIES.map((industry, index) => {
+          {(t("industries.items", { returnObjects: true }) as string[]).map((label, index) => {
+            const industry = INDUSTRIES[index]
+            if (!industry) return null
             const Icon = iconMap[industry.icon as keyof typeof iconMap]
             return (
-              <div key={index} className="group flex flex-col items-center justify-center p-6 rounded-2xl bg-card border border-border/50 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 text-center">
+              <div
+                key={industry.name}
+                className="group flex flex-col items-center justify-center p-6 rounded-2xl bg-card border border-border/50 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 text-center"
+              >
                 <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors duration-300">
                   <Icon className="h-8 w-8 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
                 </div>
-                <h3 className="font-medium text-lg">{industry.name}</h3>
+                <h3 className="font-medium text-lg">{label}</h3>
               </div>
             )
           })}

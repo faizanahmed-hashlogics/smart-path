@@ -3,7 +3,6 @@
 import { Container } from "@/components/ui/container"
 import { Section } from "@/components/ui/section"
 import { useTranslation } from "react-i18next"
-import { WHY_CHOOSE_US } from "@/lib/constants"
 import { CheckCircle2, Clock, Wallet, HeartHandshake, Lock, Users } from "lucide-react"
 
 const iconMap = {
@@ -32,20 +31,31 @@ export function WhyChooseUs() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {WHY_CHOOSE_US.map((item, index) => {
-            const Icon = iconMap[item.icon as keyof typeof iconMap]
-            return (
-              <div key={index} className="bg-card rounded-2xl p-8 border border-border/50 hover:border-primary/50 transition-colors duration-300 shadow-sm hover:shadow-md">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-                  <Icon className="h-6 w-6 text-primary" />
+          {(t("whyChooseUs.items", { returnObjects: true }) as { title: string; description: string }[]).map(
+            (item, index) => {
+              const icons: (keyof typeof iconMap)[] = [
+                "users",
+                "check-circle",
+                "clock",
+                "wallet",
+                "heart-handshake",
+                "lock",
+              ]
+              const Icon = iconMap[icons[index] ?? "check-circle"]
+              return (
+                <div
+                  key={index}
+                  className="bg-card rounded-2xl p-8 border border-border/50 hover:border-primary/50 transition-colors duration-300 shadow-sm hover:shadow-md"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+                    <Icon className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="font-heading text-xl font-bold mb-3">{item.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{item.description}</p>
                 </div>
-                <h3 className="font-heading text-xl font-bold mb-3">{item.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
-            )
-          })}
+              )
+            }
+          )}
         </div>
       </Container>
     </Section>

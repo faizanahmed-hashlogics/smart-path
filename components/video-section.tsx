@@ -3,9 +3,11 @@
 import { useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Container } from "@/components/ui/container"
+import { useTranslation } from "react-i18next"
 
 export function VideoSection() {
   const videoRef = useRef<HTMLVideoElement>(null)
+  const { t } = useTranslation()
 
   useEffect(() => {
     const video = videoRef.current
@@ -65,28 +67,23 @@ export function VideoSection() {
         <div className="max-w-4xl mx-auto text-center text-white">
           <div className="mb-12 space-y-8">
             <h2 className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold mb-8 animate-fade-in-up delay-100 drop-shadow-lg">
-              Connecting the dots. <br/>
-              <span className="text-primary">It&apos;s what we do.</span>
+              {t("videoSection.titleLine1")} <br />
+              <span className="text-primary">{t("videoSection.titleLine2")}</span>
             </h2>
             
             <p className="text-xl md:text-2xl leading-relaxed opacity-90 animate-fade-in-up delay-200 max-w-3xl mx-auto font-light">
-              Transform your business vision into measurable results with strategic guidance that drives sustainable
-              growth and competitive advantage.
+              {t("videoSection.subtitle")}
             </p>
             
             <div className="grid md:grid-cols-2 gap-8 text-left mt-12 animate-fade-in-up delay-300 bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10">
-              <div>
-                <h3 className="text-xl font-bold mb-3 text-primary">Data-Driven Insights</h3>
-                <p className="text-white/80 leading-relaxed">
-                  Our proven methodologies help businesses navigate complex challenges while maximizing opportunities in today&apos;s dynamic market.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-3 text-primary">Industry Expertise</h3>
-                <p className="text-white/80 leading-relaxed">
-                  Partner with experts who understand the nuances of scaling operations, optimizing processes, and building resilient foundations.
-                </p>
-              </div>
+              {(t("videoSection.cards", { returnObjects: true }) as { title: string; description: string }[]).map(
+                (card, idx) => (
+                  <div key={idx}>
+                    <h3 className="text-xl font-bold mb-3 text-primary">{card.title}</h3>
+                    <p className="text-white/80 leading-relaxed">{card.description}</p>
+                  </div>
+                )
+              )}
             </div>
           </div>
 
@@ -95,14 +92,14 @@ export function VideoSection() {
               size="lg"
               className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-10 py-6 text-lg rounded-full transition-all duration-300 hover:scale-105 shadow-lg shadow-primary/25"
             >
-              Who We Are
+              {t("videoSection.buttons.whoWeAre")}
             </Button>
             <Button
               size="lg"
               variant="outline"
               className="border-2 border-white/20 bg-white/5 backdrop-blur-sm text-white hover:bg-white hover:text-black px-10 py-6 text-lg rounded-full transition-all duration-300 hover:scale-105"
             >
-              What We Do
+              {t("videoSection.buttons.whatWeDo")}
             </Button>
           </div>
         </div>

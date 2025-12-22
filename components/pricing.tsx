@@ -32,7 +32,19 @@ export function Pricing() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {PRICING_PACKAGES.map((pkg, index) => (
+          {PRICING_PACKAGES.map((pkg, index) => {
+            const localizedPackages = t("pricing.packages", { returnObjects: true }) as {
+              name: string
+              description: string
+              cta: string
+              features: string[]
+            }[]
+            const lp = localizedPackages[index]
+            const name = lp?.name ?? pkg.name
+            const description = lp?.description ?? pkg.description
+            const features = lp?.features ?? pkg.features
+            const cta = lp?.cta ?? pkg.cta
+            return (
             <Card 
               key={index} 
               className={cn(
@@ -44,13 +56,13 @@ export function Pricing() {
             >
               {pkg.popular && (
                 <div className="absolute top-0 right-0 bg-primary text-primary-foreground text-xs font-bold px-4 py-1.5 rounded-bl-xl shadow-md">
-                  Most Popular
+                  {t("pricing.mostPopular")}
                 </div>
               )}
               
               <div className="mb-8">
-                <h3 className="font-heading text-2xl font-bold mb-3">{pkg.name}</h3>
-                <p className="text-muted-foreground text-sm mb-6 min-h-[40px]">{pkg.description}</p>
+                <h3 className="font-heading text-2xl font-bold mb-3">{name}</h3>
+                <p className="text-muted-foreground text-sm mb-6 min-h-[40px]">{description}</p>
                 <div className="flex items-baseline gap-1">
                   <span className="text-4xl font-bold text-primary">{pkg.price}</span>
                   <span className="text-muted-foreground text-sm font-medium">{pkg.period}</span>
@@ -58,7 +70,7 @@ export function Pricing() {
               </div>
 
               <div className="flex-1 space-y-4 mb-8">
-                {pkg.features.map((feature, i) => (
+                {features.map((feature, i) => (
                   <div key={i} className="flex items-start space-x-3 text-sm group">
                     <div className="mt-0.5 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                       <Check className="h-3 w-3 text-primary group-hover:text-white transition-colors" />
@@ -76,10 +88,10 @@ export function Pricing() {
                     : "bg-card hover:bg-primary hover:text-primary-foreground border border-border hover:border-primary text-foreground hover:shadow-lg hover:scale-[1.02]"
                 )}
               >
-                {pkg.cta}
+                {cta}
               </Button>
             </Card>
-          ))}
+          )})}
         </div>
       </Container>
     </Section>

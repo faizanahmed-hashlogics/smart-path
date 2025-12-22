@@ -82,15 +82,15 @@ export function Hero() {
             <div className="mt-12 flex items-center gap-8 text-muted-foreground animate-fade-in-up delay-500">
               <div className="flex items-center gap-2">
                 <ShieldCheck className="h-5 w-5 text-primary" />
-                <span className="text-sm font-medium">ISO Certified</span>
+                <span className="text-sm font-medium">{t("hero.badges.certified")}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Globe2 className="h-5 w-5 text-primary" />
-                <span className="text-sm font-medium">Global Reach</span>
+                <span className="text-sm font-medium">{t("hero.badges.globalReach")}</span>
               </div>
               <div className="flex items-center gap-2">
                 <BarChart3 className="h-5 w-5 text-primary" />
-                <span className="text-sm font-medium">Data Driven</span>
+                <span className="text-sm font-medium">{t("hero.badges.dataDriven")}</span>
               </div>
             </div>
           </div>

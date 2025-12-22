@@ -3,7 +3,6 @@
 import { Container } from "@/components/ui/container"
 import { Section } from "@/components/ui/section"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { FAQS } from "@/lib/constants"
 import { useTranslation } from "react-i18next"
 
 import { useState } from "react"
@@ -16,7 +15,9 @@ export function FAQs() {
   const { t } = useTranslation()
   const [searchQuery, setSearchQuery] = useState("")
 
-  const filteredFaqs = FAQS.filter((faq) =>
+  const faqs = t("faq.items", { returnObjects: true }) as { question: string; answer: string }[]
+
+  const filteredFaqs = faqs.filter((faq) =>
     faq.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
     faq.answer.toLowerCase().includes(searchQuery.toLowerCase())
   )
@@ -42,7 +43,7 @@ export function FAQs() {
             />
           </div>
           <div className="mt-6 flex flex-wrap gap-2 justify-center">
-            {["Timelines", "Documents", "Budgets", "Engagement"].map((p) => (
+            {(t("faq.chips", { returnObjects: true }) as string[]).map((p) => (
               <button
                 key={p}
                 type="button"

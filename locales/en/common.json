@@ -25,6 +25,11 @@
     "cta": {
       "primary": "Our Services",
       "secondary": "Contact Us"
+    },
+    "badges": {
+      "certified": "Certified",
+      "globalReach": "Global Reach",
+      "dataDriven": "Data Driven"
     }
   },
   "about": {
@@ -72,17 +77,117 @@
   },
   "services": {
     "title": "Our Core Services",
-    "subtitle": "Comprehensive solutions tailored to your business needs."
+    "subtitle": "Comprehensive solutions tailored to your business needs.",
+    "ctaButton": "Get Started",
+    "items": {
+      "assurance": {
+        "title": "Assurance Advisory",
+        "description": "Our assurance services provide stakeholders with confidence in the reliability of your financial information. We go beyond compliance to identify opportunities for operational improvement.",
+        "points": [
+          "Internal Audit",
+          "Review & Assurance Engagements",
+          "Special Purpose Audits",
+          "Agreed Upon Procedures (AUP)",
+          "Audit for Investors"
+        ]
+      },
+      "accounting": {
+        "title": "Accounting & Bookkeeping",
+        "description": "Streamline your financial operations with our comprehensive bookkeeping services. We ensure your records are accurate, up-to-date, and compliant with all regulations.",
+        "points": [
+          "Daily Bookkeeping",
+          "General Ledger Management",
+          "Accounts Payable & Receivable",
+          "Bank Reconciliation",
+          "Monthly, Quarterly & Annual Closing",
+          "MIS & Management Reporting"
+        ]
+      },
+      "financials": {
+        "title": "Financial Statements & IFRS",
+        "description": "Ensure your financial statements are prepared in accordance with International Financial Reporting Standards (IFRS). We help you navigate complex accounting standards with ease.",
+        "points": [
+          "Balance Sheet, P&L & Cash Flow Statements",
+          "IFRS Advisory & Implementation",
+          "Notes to Accounts",
+          "Year-End Finalization",
+          "External Audit Coordination"
+        ]
+      },
+      "vat": {
+        "title": "VAT & Taxation Services",
+        "description": "Navigate the UAE's tax landscape with confidence. Our tax experts assist with VAT registration, filing, and compliance to minimize risk and optimize your tax position.",
+        "points": [
+          "VAT Registration & Deregistration",
+          "VAT Return Filing",
+          "VAT Review & Health Check",
+          "Voluntary Disclosures",
+          "VAT Advisory"
+        ]
+      },
+      "compliance": {
+        "title": "Internal Controls & Compliance",
+        "description": "Strengthen your governance framework with robust internal controls. We help you identify risks, develop policies, and ensure compliance with regulatory requirements.",
+        "points": [
+          "Internal Control Review",
+          "Risk Assessment",
+          "SOP & Policy Development",
+          "Fraud Risk Assessment",
+          "Compliance Audits"
+        ]
+      },
+      "advisory": {
+        "title": "Business Advisory & CFO",
+        "description": "Get strategic financial guidance without the cost of a full-time CFO. We provide insights to help you make informed decisions, manage cash flow, and drive growth.",
+        "points": [
+          "Budgeting & Forecasting",
+          "Cash Flow Management",
+          "Cost Control & Profitability Analysis",
+          "Business Valuation Support",
+          "Feasibility Studies",
+          "Virtual CFO Services"
+        ]
+      },
+      "startup": {
+        "title": "Startup & Business Setup",
+        "description": "Launch your business on the right foot. We assist with financial planning, system setup, and compliance to ensure a smooth and successful startup journey.",
+        "points": [
+          "Accounting System Setup",
+          "Compliance Framework",
+          "Financial Planning",
+          "VAT & Tax Setup",
+          "Ongoing Accounting Support"
+        ]
+      }
+    }
   },
   "whyChooseUs": {
     "title": "Why Choose <br/> <span class=\"text-primary\">Smart Path Consultancy</span>",
     "items": [
-      "Experienced Audit & Accounting Professionals",
-      "Full Compliance with UAE Laws & IFRS",
-      "Timely Reporting & Deadline Assurance",
-      "Affordable & Transparent Pricing",
-      "Personalized Client Support",
-      "Strict Confidentiality & Data Security"
+      {
+        "title": "Experienced Professionals",
+        "description": "Our team consists of highly qualified audit and accounting experts."
+      },
+      {
+        "title": "Full Compliance",
+        "description": "We ensure strict adherence to UAE laws and IFRS standards."
+      },
+      {
+        "title": "Timely Reporting",
+        "description": "We guarantee on-time delivery of all financial reports and audits."
+      },
+      {
+        "title": "Transparent Pricing",
+        "description": "No hidden fees. Our pricing is affordable and completely transparent."
+      },
+      {
+        "title": "Personalized Support",
+        "description": "We provide dedicated, client-focused support tailored to your business needs."
+      },
+      {
+        "title": "Confidentiality & Data Security",
+        "description": "We maintain strict confidentiality and robust security for all your financial data."
+      }
     ]
   },
   "industries": {
@@ -99,14 +204,94 @@
       "Startups & SMEs"
     ]
   },
+  "videoSection": {
+    "titleLine1": "Connecting the dots.",
+    "titleLine2": "It's what we do.",
+    "subtitle": "Transform your business vision into measurable results with strategic guidance that drives sustainable growth and competitive advantage.",
+    "cards": [
+      {
+        "title": "Data-Driven Insights",
+        "description": "Our proven methodologies help businesses navigate complex challenges while maximizing opportunities in today's dynamic market."
+      },
+      {
+        "title": "Industry Expertise",
+        "description": "Partner with experts who understand the nuances of scaling operations, optimizing processes, and building resilient foundations."
+      }
+    ],
+    "buttons": {
+      "whoWeAre": "Who We Are",
+      "whatWeDo": "What We Do"
+    }
+  },
   "pricing": {
     "badge": "Our Packages",
     "title": "Transparent Pricing",
-    "subtitle": "Choose the plan that fits your business needs."
+    "subtitle": "Choose the plan that fits your business needs.",
+    "mostPopular": "Most Popular",
+    "packages": [
+      {
+        "name": "Starter Package",
+        "description": "Essential financial compliance for small businesses.",
+        "cta": "Get Started",
+        "features": [
+          "Monthly Bookkeeping",
+          "VAT Filing",
+          "Basic Financial Reports",
+          "Email Support"
+        ]
+      },
+      {
+        "name": "Growth Package",
+        "description": "Comprehensive support for growing companies.",
+        "cta": "Get Started",
+        "features": [
+          "Full Accounting Support",
+          "IFRS Financial Statements",
+          "Audit Support",
+          "VAT Compliance",
+          "Monthly Management Reports"
+        ]
+      },
+      {
+        "name": "Premium Package",
+        "description": "Strategic financial leadership for established enterprises.",
+        "cta": "Contact Us",
+        "features": [
+          "Complete Finance Outsourcing",
+          "Virtual CFO Services",
+          "Budgeting & Forecasting",
+          "Internal Controls & Risk Management",
+          "Board Presentation Support"
+        ]
+      }
+    ]
   },
   "faq": {
     "title": "Frequently Asked Questions",
-    "subtitle": "Answers to common questions about our services."
+    "subtitle": "Answers to common questions about our services.",
+    "search_placeholder": "Search FAQs (timelines, pricing, documents)",
+    "chips": ["Timelines", "Documents", "Budgets", "Engagement"],
+    "browse_cta": "Browse FAQs",
+    "ask_cta": "Ask a question",
+    "no_results": "No results found matching your search.",
+    "items": [
+      {
+        "question": "Do you work with all business industries?",
+        "answer": "Yes, we serve all industries across the UAE."
+      },
+      {
+        "question": "Do you offer outsourcing services?",
+        "answer": "Yes, we provide full finance outsourcing services."
+      },
+      {
+        "question": "Do you help with VAT audits?",
+        "answer": "Yes, we fully support VAT audits and FTA reviews."
+      },
+      {
+        "question": "Can you prepare financials for investors?",
+        "answer": "Yes, we prepare audit-ready financial statements for investors."
+      }
+    ]
   },
   "contact": {
     "title": "Contact Us",
@@ -118,10 +303,51 @@
       "hours": "Sunday – Friday | 9:00 AM – 6:00 PM"
     }
   },
+  "contactSection": {
+    "badge": "Contact Us",
+    "heroTitle": "Get Started Today",
+    "heroSubtitle": "Ready to accelerate your business growth? Let's discuss how we can help you succeed in the UAE market.",
+    "formTitle": "Send us a message",
+    "formSubtitle": "Fill out the form below and we'll get back to you within 24 hours. Your information is kept strictly confidential.",
+    "labels": {
+      "name": "Name *",
+      "email": "Email *",
+      "phone": "Phone (UAE)",
+      "company": "Company",
+      "message": "Message *"
+    },
+    "placeholders": {
+      "name": "John Doe",
+      "email": "john@company.com",
+      "phone": "+971-50-1234567",
+      "company": "Company Name",
+      "message": "Tell us about your business goals and how we can help..."
+    },
+    "submit": {
+      "idle": "Send Message",
+      "sending": "Sending..."
+    },
+    "success": {
+      "title": "Thank You!",
+      "body": "We’d love to hear from you — we’ll reach you soon. Our team will get back to you within 24 hours.",
+      "cta": "Send Another Message"
+    },
+    "quickActionsTitle": "Quick Actions",
+    "whatsappCta": "WhatsApp Us",
+    "contactInfoTitle": "Contact Information",
+    "infoLabels": {
+      "location": "Location",
+      "phone": "Phone",
+      "email": "Email",
+      "hours": "Working Hours"
+    },
+    "legal": "By submitting this form, you agree to our privacy policy and consent to being contacted about our services."
+  },
   "careers": {
     "title": "Careers",
     "subtitle": "Join Smart Path Consultancy and grow your professional career.",
-    "description": "We are always looking for talented individuals to join our team."
+    "description": "We are always looking for talented individuals to join our team.",
+    "cta": "Contact us about careers"
   },
   "languageMenu": {
     "english": "English",

@@ -5,6 +5,7 @@ import { Section } from "@/components/ui/section"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Briefcase } from "lucide-react"
 import { useTranslation } from "react-i18next"
+import Link from "next/link"
 
 export function CareersSection() {
   const { t } = useTranslation()
@@ -33,10 +34,12 @@ export function CareersSection() {
             {t("careers.description")}
           </p>
 
-          <Button size="lg" className="h-12 px-8 rounded-full text-base">
-            {t("careers.cta")}
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
+          <Link href="/#contact">
+            <Button size="lg" className="h-12 px-8 rounded-full text-base inline-flex items-center gap-2">
+              {t("careers.cta")}
+              <ArrowRight className="h-4 w-4" />
+            </Button>
+          </Link>
         </div>
       </Container>
     </Section>
