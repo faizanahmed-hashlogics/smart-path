@@ -11,7 +11,7 @@ import { usePathname } from "next/navigation"
 import { useTranslation } from "react-i18next"
 import { LanguageSwitcher } from "@/components/i18n/language-switcher"
 import { cn } from "@/lib/utils"
-import { SERVICES, PRICING_PACKAGES } from "@/lib/constants"
+import { SERVICES, PRICING_PACKAGES, SITE_CONFIG } from "@/lib/constants"
 import { Shield, Target, Users, Award } from "lucide-react"
 
 const navigation = [
@@ -24,7 +24,7 @@ const navigation = [
 ]
 
 const socialLinks = [
-  { icon: Facebook, href: "#", label: "Facebook" },
+  { icon: Facebook, href: "https://www.facebook.com/profile.php?id=61584917881316", label: "Facebook" },
   { icon: Instagram, href: "#", label: "Instagram" }
 ]
 
@@ -149,20 +149,26 @@ export function Navbar() {
           <Container>
             <div className="flex items-center justify-between py-2">
               <div className="hidden xl:flex items-center space-x-6 text-xs font-medium text-muted-foreground w-full justify-end">
-                <div className="flex items-center space-x-2 px-3 py-1 rounded-full bg-secondary/50 hover:bg-secondary transition-colors">
+                <Link
+                  href="/#contact"
+                  className="flex items-center space-x-2 px-3 py-1 rounded-full bg-secondary/50 hover:bg-secondary transition-colors"
+                >
                   <MapPin className="h-3.5 w-3.5 text-primary" />
                   <span>{t("navbar.location.line1")}</span>
-                </div>
+                </Link>
 
                 <div className="flex items-center space-x-2 px-3 py-1 rounded-full bg-secondary/50 hover:bg-secondary transition-colors">
                   <Clock className="h-3.5 w-3.5 text-primary" />
                   <span>{t("navbar.hours.line1")}</span>
                 </div>
 
-                <div className="flex items-center space-x-2 px-3 py-1 rounded-full bg-secondary/50 hover:bg-secondary transition-colors">
+                <a
+                  href={`tel:${SITE_CONFIG.contact.phone}`}
+                  className="flex items-center space-x-2 px-3 py-1 rounded-full bg-secondary/50 hover:bg-secondary transition-colors"
+                >
                   <Phone className="h-3.5 w-3.5 text-primary" />
                   <span>{t("navbar.phone.number")}</span>
-                </div>
+                </a>
               </div>
             </div>
           </Container>
@@ -192,9 +198,9 @@ export function Navbar() {
                 <Image
                   src="/images/navbar-logo-black-color.png"
                   alt="Smart Path Consultancy"
-                  width={160}
-                  height={40}
-                  className="relative h-9 sm:h-11 w-auto dark:invert transition-transform duration-300 group-hover:scale-105"
+                  width={200}
+                  height={56}
+                  className="relative h-10 sm:h-12 md:h-14 w-auto dark:invert transition-transform duration-300 group-hover:scale-105"
                   priority
                 />
               </div>
@@ -381,6 +387,8 @@ export function Navbar() {
                 <a
                   key={social.label}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary transition-colors p-2 hover:bg-muted rounded-full hover:scale-110 transform duration-200"
                   aria-label={social.label}
                 >
@@ -456,6 +464,8 @@ export function Navbar() {
                       <a
                         key={social.label}
                         href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="p-2 rounded-full bg-background/50 border border-border/50 text-foreground hover:text-primary transition-colors"
                       >
                         <social.icon className="h-4 w-4" />
