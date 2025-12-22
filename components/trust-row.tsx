@@ -6,7 +6,7 @@ export function TrustRow() {
   const logos = [
     { src: "/images/final logo-02.png", alt: "Smart Path Consultancy" },
     { src: "/images/business%20logo.jpg", alt: "Business Logo" },
-    { src: "/images/dubai-business-trade.png", alt: "Dubai Business Trade" },
+    { src: "/images/dubai-business-trade.png", alt: "UAE Business Trade" },
   ]
 
   // Duplicate to create a longer, seamless marquee track

@@ -17,7 +17,7 @@ const workCases = [
     id: 2,
     title: "Economic feasibility study validates AED 50M investment",
     description:
-      "Comprehensive economic analysis and feasibility study helped a regional developer secure funding for a major infrastructure project in Dubai.",
+      "Comprehensive economic analysis and feasibility study helped a regional developer secure funding for a major infrastructure project in the UAE.",
     buttonText: "Read the full story",
     image: "/images/hero-slide-2.jpeg",
   },

@@ -8,6 +8,7 @@ import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { cn } from "@/lib/utils"
 import { CheckCircle2, ArrowRight } from "lucide-react"
+import Link from "next/link"
 
 export function Services() {
   const { t } = useTranslation()
@@ -83,9 +84,11 @@ export function Services() {
                 </div>
                 
                 <div className="pt-8 border-t border-border/50 flex justify-end">
-                  <Button className="rounded-full">
-                    Get Started <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
+                  <Link href="/#contact">
+                    <Button className="rounded-full inline-flex items-center gap-2">
+                      Get Started <ArrowRight className="h-4 w-4" />
+                    </Button>
+                  </Link>
                 </div>
               </div>
             ))}

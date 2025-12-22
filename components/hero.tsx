@@ -29,7 +29,7 @@ export function Hero() {
         <div className="absolute inset-0 z-0">
           <img 
             src="/images/dubai-skyline.webp" 
-            alt="Dubai Skyline" 
+            alt="UAE Skyline" 
             className="w-full h-full object-cover opacity-60 dark:opacity-40"
           />
         </div>

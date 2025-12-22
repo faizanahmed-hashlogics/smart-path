@@ -26,7 +26,7 @@ export default function ContactPage() {
               <div className="mt-6 flex flex-wrap gap-2 justify-center">
                 <span className="inline-flex items-center gap-2 text-xs rounded-full border border-border bg-background/70 px-3 py-1"><Clock className="h-3.5 w-3.5 text-primary" /> 24h response</span>
                 <span className="inline-flex items-center gap-2 text-xs rounded-full border border-border bg-background/70 px-3 py-1"><Shield className="h-3.5 w-3.5 text-primary" /> Confidential</span>
-                <span className="inline-flex items-center gap-2 text-xs rounded-full border border-border bg-background/70 px-3 py-1"><MapPin className="h-3.5 w-3.5 text-primary" /> Dubai, UAE</span>
+                <span className="inline-flex items-center gap-2 text-xs rounded-full border border-border bg-background/70 px-3 py-1"><MapPin className="h-3.5 w-3.5 text-primary" /> UAE</span>
               </div>
               <div className="mt-8 flex flex-wrap items-center gap-3 justify-center">
                 <Link href="#contact">
